@@ -12,65 +12,83 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "role")
-public class Role {
-	
+public class Role
+{
+
 	private Long id;
-	
+
 	private String name;
-	
+
 	private Set<User> users;
-	
-	public Role() {
-		
+
+	public Role()
+	{
+
 	}
-	
-	public Role(Long id, String name, Set<User> users) {
+
+	public Role(Long id, String name, Set<User> users)
+	{
 		super();
 		this.id = id;
 		this.name = name;
 		this.users = users;
 	}
-	
 
-	public Role(String name, Set<User> users) {
+	public Role(String name, Set<User> users)
+	{
 		super();
 		this.name = name;
 		this.users = users;
 	}
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Long getId()
+	{
 		return id;
 	}
-	public void setId(Long id) {
+
+	public void setId(Long id)
+	{
 		this.id = id;
 	}
-	public String getName() {
+
+	public String getName()
+	{
 		return name;
 	}
-	public void setName(String name) {
+
+	public void setName(String name)
+	{
 		this.name = name;
 	}
+
 	@ManyToMany(mappedBy = "roles")
-	public Set<User> getUsers() {
+	public Set<User> getUsers()
+	{
 		return users;
 	}
-	public void setUsers(Set<User> users) {
+
+	public void setUsers(Set<User> users)
+	{
 		this.users = users;
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "Role [id=" + id + ", name=" + name + ", users=" + users + "]";
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		return Objects.hash(id, name, users);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -80,7 +98,5 @@ public class Role {
 		Role other = (Role) obj;
 		return Objects.equals(id, other.id) && Objects.equals(name, other.name) && Objects.equals(users, other.users);
 	}
-	
-	
 
 }
