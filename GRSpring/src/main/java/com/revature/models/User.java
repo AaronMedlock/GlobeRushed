@@ -23,28 +23,27 @@ public class User
 	
 	 private String username;
 	 private String password;
-	 private String passwordConfirm;
 	 private Set<Role> roles;
 	 
 	public User() {
 		
 	}
 	
-	public User(Long id, String username, String password, String passwordConfirm, Set<Role> roles) {
+	public User(Long id, String username, String password, Set<Role> roles) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.passwordConfirm = passwordConfirm;
+		
 		this.roles = roles;
 	}
 	
 
-	public User(String username, String password, String passwordConfirm, Set<Role> roles) {
+	public User(String username, String password, Set<Role> roles) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.passwordConfirm = passwordConfirm;
+		
 		this.roles = roles;
 	}
 	
@@ -69,15 +68,6 @@ public class User
 		this.password = password;
 	}
 	
-	@Transient
-	public String getPasswordConfirm() {
-		return passwordConfirm;
-	}
-	
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
-	}
-	
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	public Set<Role> getRoles() {
@@ -89,13 +79,13 @@ public class User
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", passwordConfirm="
-				+ passwordConfirm + ", roles=" + roles + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password 
+				 + ", roles=" + roles + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, password, passwordConfirm, roles, username);
+		return Objects.hash(id, password, roles, username);
 	}
 
 	@Override
@@ -108,7 +98,7 @@ public class User
 			return false;
 		User other = (User) obj;
 		return Objects.equals(id, other.id) && Objects.equals(password, other.password)
-				&& Objects.equals(passwordConfirm, other.passwordConfirm) && Objects.equals(roles, other.roles)
+				&& Objects.equals(roles, other.roles)
 				&& Objects.equals(username, other.username);
 	}
 	 
