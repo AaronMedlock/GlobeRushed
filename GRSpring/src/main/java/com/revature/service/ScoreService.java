@@ -28,8 +28,16 @@ public class ScoreService
 		return scoreRepo.findScoreByUser(user).stream().collect(Collectors.toList());
 	}
 	
+	@Transactional
 	public List<Score> findScoreByLocation(long latitude,long longitude)
 	{
 		return scoreRepo.findScoreByLocation(latitude, longitude).stream().collect(Collectors.toList());
+	}
+	
+	@Transactional
+	public Score save(Score score)
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
