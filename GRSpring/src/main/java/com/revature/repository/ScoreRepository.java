@@ -13,6 +13,6 @@ import com.revature.models.User;
 public interface ScoreRepository extends JpaRepository<User, Integer>
 {
 	public List<Score> findScoreByUser(User user);
-	Optional<Score> findScoreByLocation(Long latitude,Long longitude);
+	Optional<Score> findScoreByLocation(long latitude,long longitude);
 	Optional<Score> findAllScores();
 }

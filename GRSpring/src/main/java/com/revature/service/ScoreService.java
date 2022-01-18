@@ -1,6 +1,6 @@
 package com.revature.service;
 
-import java.util.Set;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.revature.models.Score;
+import com.revature.models.User;
 import com.revature.repository.ScoreRepository;
 
 public class ScoreService
@@ -16,8 +17,19 @@ public class ScoreService
 	ScoreRepository scoreRepo;
 	
 	@Transactional()
-	public Set<Score> findAll()
+	public List<Score> findAll()
 	{
-		return scoreRepo.findAllScores().stream().collect(Collectors.toSet());
+		return scoreRepo.findAllScores().stream().collect(Collectors.toList());
+	}
+	
+	@Transactional()
+	public List<Score> findByUser(User user)
+	{
+		return scoreRepo.findScoreByUser(user).stream().collect(Collectors.toList());
+	}
+	
+	public List<Score> findScoreByLocation(long latitude,long longitude)
+	{
+		return scoreRepo.findScoreByLocation(latitude, longitude).stream().collect(Collectors.toList());
 	}
 }

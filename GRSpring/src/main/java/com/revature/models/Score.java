@@ -44,7 +44,9 @@ public class Score
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public long getScoreId()
 	{
 		return scoreId;
