@@ -7,7 +7,7 @@ public interface UserService {
 	User save(User user);
 	User findById(int id);
 	User findByUsername(String username);
-	void deleteUser(int id);
+	//void deleteUser(int id);
 
 
 }
