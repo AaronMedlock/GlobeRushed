@@ -34,12 +34,12 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByUsername(username);
 	}
 
-	@Override
-	public void deleteUser(int id)
-	{
-		//TODO
-		
-	}
+//	@Override
+//	public void deleteUser(int id)
+//	{
+//		//TODO
+//		
+//	}
 
 	@Override
 	public User findById(int id)
