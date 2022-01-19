@@ -7,8 +7,8 @@ import com.revature.models.User;
 public interface UserRepository extends JpaRepository<User, Long> 
 {
 	User findByUsername(String username);
-	User findById(long id);
+	User findById(int id);
 	User save(User user);
-	void deleteUser(long id);
+	void deleteUser(int id);
 	
 }

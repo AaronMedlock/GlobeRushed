@@ -35,14 +35,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUser(long id)
+	public void deleteUser(int id)
 	{
 		//TODO
 		
 	}
 
 	@Override
-	public User findById(long id)
+	public User findById(int id)
 	{
 		// TODO Auto-generated method stub
 		return null;
