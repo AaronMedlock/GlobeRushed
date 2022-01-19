@@ -1,15 +1,34 @@
 <header>
-  <div id="index_headerimg-container">
-    <img src="{{headerDecoImage}}" id="headerDecoImage" />
-  </div>
-  <div id="index_login-container">
-    <div id="main-login">
-      <img src="{{headerLogoImage}}" id="headerLogoImage" />
-      <label>Username:</label>
-      <input type="text" />
-      <label>Password:</label>
-      <input type="password" />
-      <input type="submit" value="Login and play!"/>
+  <div class="split-container" id="user-login-reg-container">
+    <div id="index_headerimg-container" class="split-container_half">
+      <img src="{{headerDecoImage}}" id="headerDecoImage" />
+    </div>
+    <div id="index_user-container" class="split-container_half">
+      <!-- User Login box -->
+      <form id="main-login">
+        <img src="{{headerLogoImage}}" id="headerLogoImage" />
+        <label>Username:</label>
+        <input type="text" name="username" [(ngModel)]="username" id="username" placeholder="What do we call you?">
+        <label>Password:</label>
+        <input type="password" name="password" [(ngModel)]="password" id="password" placeholder="Shh... this is a secret">
+        <input type="submit" name="Login" value="Login and play!" (click)="doLogin()"/>
+        <p class="toggle-login" (click)="toggleMenu($event)"><b>Don't have an account?</b>Register now!</p>
+      </form>
+
+        <!-- User Registration box -->
+        <form id="main-registration" class="hide_index-container">
+          <img src="{{headerLogoImage}}" id="headerLogoImage" />
+          <label>Username:</label>
+          <input type="text" name="newUsername" [(ngModel)]="newUsername" id="newUsername" placeholder="What shall the world call you?" />
+          <label>Email:</label>
+          <input type="text" name="newEmail" [(ngModel)]="newEmail" id="newEmail" placeholder="Where do we email you at?" />
+          <label>Password:</label>
+          <input type="password"  name="newPassword" [(ngModel)]="newPassword" id="newPassword" placeholder="Try and pick a good one..." />
+          <label>Confirm Password:</label>
+          <input type="password"  name="newPasswordConfirm" [(ngModel)]="newPasswordConfirm" id="newPasswordConfirm" placeholder="You're almost there!" />
+          <input type="submit" value="Sign up and play!"/>
+          <p class="toggle-login" (click)="toggleMenu($event)"><b>Already have an account?</b>Sign in now!</p>
+        </form>
     </div>
   </div>
 </header>
@@ -23,18 +42,25 @@
       or keep reading if you want to know more about Globe Rushed!
     </p>
   </div>
-    <button class="accordion">How do I play</button>
+    <button class="accordion" (click)="toggleAccordion($event.target)">How do I play?</button>
     <div class="panel">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
-    <button class="accordion">How do I invite friends?</button>
+    <button class="accordion" (click)="toggleAccordion($event.target)">How do I invite friends?</button>
     <div class="panel">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
-    <button class="accordion">Where can I see the leaderboards?</button>
+    <button class="accordion" (click)="toggleAccordion($event.target)">Where can I see the leaderboards?</button>
     <div class="panel">
-      <p>To see how you rank globally, simply visit <a href="{{siteUrl}}/leaderboard">our leaderboards</a>.
+      <p>To see how you rank globally, simply visit <a>our leaderboards</a>.
         If you want to see how you rank against your friends, simply log in and you'll find a customized leaderboard with
       your friend's progress.</p>
     </div>
 </main>
+<footer>
+  <p>Made with <i class="fas fa-heart"></i> and <i class="fas fa-mug-hot"></i> by<br/>
+    <a href="https://github.com/AaronMedlock" target="_blank">Aaron Medlock</a>,
+    <a href="https://github.com/Kyle-Crowley" target="_blank">Kyle Crowley</a>,
+    and <a href="https://github.com/talhame3" target="_blank">Talha Hassan</a>
+  </p>
+</footer>

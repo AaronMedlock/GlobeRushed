@@ -1,31 +1,36 @@
-header{
-  display: flex;
-  width: 100%;
-}
-#index_login-container, #index_headerimg-container{
-  width: 50%;
-}
+/* Decorative Image */
 #headerDecoImage{
   height: auto;
   width: 100%;
 }
-#main-login{
-  display: block;
-  margin: 25% auto 0px auto;
+
+/* Login / Registration */
+#index_user-container {
+  position: relative;
+  height: calc(560px + 12.5vh);
+  overflow-x: hidden;
+}
+#index_user-container > form{
+  position: absolute;
+  right: 25%;
+  opacity: 1;
+  transition: 1s all;
+  transform: translate3d();
+  -webkit-transform: translate3d(0, 0, 0);
   width: 300px;
 }
-#main-login > #headerLogoImage{
+#index_user-container > form > #headerLogoImage{
   display: block;
   margin: 0px auto;
   width: 200px;
 }
-#main-login > label{
+#index_user-container > form > label{
   display: block;
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
   margin: 18px 0px 5px 7.5px;
 }
-#main-login > input{
+#index_user-container > form > input{
   background: #FFFFFF;
   border: 2px solid #cbcbcb;
   border-radius: 25px;
@@ -37,7 +42,7 @@ header{
   padding: 8px 15px;
   width: calc(100% - 34px);
 }
-#main-login > input[type = submit]{
+#index_user-container > form > input[type = submit]{
   background-color: var(--GR-red);
   color: #FFF;
   cursor: pointer;
@@ -45,9 +50,42 @@ header{
   margin: 25px auto 0px auto;
   transition: 0.5s all;
 }
-#main-login > input[type = submit]:hover{
+#index_user-container > form > input[type = submit]:hover{
   background-color:rgb(253, 124, 159);
 }
+#index_user-container > form > input::placeholder{
+  font-size: 12px;
+}
+#index_user-container > form > input:focus{
+  outline: none;
+  border: 2px solid #999;
+}
+.toggle-login{
+  color: var(--GR-orange);
+  cursor: pointer;
+  font-weight: 300;
+  text-align: center;
+  transition: 0.3s all;
+}
+.toggle-login:hover{
+  color: #000;
+}
+.toggle-login > b{
+  display: block;
+  font-weight: 500;
+}
+.hide_index-container{
+  right: -50vw !important;
+  opacity: 0 !important;
+}
+#main-login{
+  top: 12.5%;
+}
+#main-registration{
+  top: 7.5%;
+}
+
+/* "About Us" info */
 #index_about-us{
   margin-top: 25px;
 }
@@ -63,9 +101,10 @@ header{
 .accordion {
   background-color: #cecece;
   border: none;
+  border-radius: 5px;
   color: #444;
   cursor: pointer;
-  margin: 10px 0px;
+  margin: 10px 0px 0px 0px;
   transition: 0.4s all;
   padding: 18px;
   width: 100%;
@@ -73,6 +112,9 @@ header{
 }
 .active, .accordion:hover{
   background-color: #eee;
+}
+.accordion.active{
+  border-radius: 5px 5px 0px 0px;
 }
 .accordion:after{
   color: #777;
@@ -85,11 +127,48 @@ header{
   content: "\2212";
 }
 .panel {
-  background-color: white;
+  background-color: #eee;
+  border-radius: 0px 0px 5px 5px;
+  line-height: 1.5em;
+  font-size: 15px;
+  font-weight: 300;
   max-height: 0;
   overflow: hidden;
   padding: 0px 18px;
   transition: max-height 0.2s ease-out;
+}
+
+/* Footer */
+footer{
+  background: url('../../../assets/footer-map.png') top right no-repeat;
+  background-size: contain;
+  font-weight: 300;
+  height: 200px;
+  margin-top: 125px;
+  position: relative;
+}
+footer p{
+  position: absolute;
+  bottom: 125px;
+  line-height: 1.5em;
+  text-align: center;
+  width: 100%;
+}
+.fas{
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-size: 22.5px;
+}
+.fa-heart{
+  background: linear-gradient(#e1298a, #b776c2);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.fa-mug-hot{
+  background: linear-gradient(#fbac15, #ed336c);
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 /* Mobile */
@@ -97,11 +176,38 @@ header{
   #index_headerimg-container{
     display: none;
   }
-  #index_login-container{
+  #index_user-container{
+    height: auto;
     margin-top: 20px;
+    text-align: center;
     width: 100%;
+  }
+  #index_user-container > form{
+    display: block;
+    margin: 25% auto 0px auto;
+    position: relative;
+    top: unset;
+    right: unset;
+    width: 300px;
+  }
+  #index_user-container > form > label{
+    text-align: left;
+  }
+  .hide_index-container{
+    display: none !important;
+    right: unset !important;
   }
   main{
     margin-top: 69px;
+  }
+  footer{
+    background: url('../../../assets/mobile_footer-map.png') bottom left no-repeat;
+    background-size: contain;
+    height: 250px;
+  }
+  footer p{
+    bottom: 175px;
+    left: 12.5%;
+    width: 75%;
   }
 }
