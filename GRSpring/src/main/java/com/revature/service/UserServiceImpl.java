@@ -1,11 +1,14 @@
 package com.revature.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.User;
 import com.revature.repository.UserRepository;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -30,6 +33,11 @@ public class UserServiceImpl implements UserService {
 	public User findById(int id)
 	{
 		return userRepository.findById(id);
+	}
+	
+	public List<User> addFriendList()
+	{
+		return null;
 	}
 
 }

@@ -6,11 +6,13 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.models.Score;
 import com.revature.models.User;
 import com.revature.repository.ScoreRepository;
 
+@Service
 public class ScoreService
 {
 	@Autowired

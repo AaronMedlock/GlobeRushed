@@ -20,7 +20,7 @@ import com.revature.util.SortByScoreValue;
 public class ScoreController
 {
 	@Autowired
-	ScoreService scoreService;
+	private ScoreService scoreService;
 	
 	/*
 	 * After each game concludes, a post request will send a score object to 
@@ -45,6 +45,8 @@ public class ScoreController
 		SortByScoreValue scoreComparator = new SortByScoreValue();
 		Collections.sort((List<Score>) allScores,scoreComparator);
 		//TODO:build a response for 50 json score objects
+		
+		
 		
 		return null;
 	}
