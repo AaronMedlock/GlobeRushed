@@ -51,7 +51,7 @@
   transition: 0.5s all;
 }
 #index_user-container > form > input[type = submit]:hover{
-  background-color:rgb(253, 124, 159);
+  background-color: var(--GR-red-hover);
 }
 #index_user-container > form > input::placeholder{
   font-size: 12px;
@@ -59,6 +59,10 @@
 #index_user-container > form > input:focus{
   outline: none;
   border: 2px solid #999;
+}
+#index_user-container > form > input[type = submit]:focus{
+  outline: none;
+  border: none;
 }
 .toggle-login{
   color: var(--GR-orange);
@@ -79,10 +83,10 @@
   opacity: 0 !important;
 }
 #main-login{
-  top: 12.5%;
+  top: 20%;
 }
 #main-registration{
-  top: 7.5%;
+  top: 8%;
 }
 
 /* "About Us" info */
@@ -166,15 +170,5 @@
   }
   main{
     margin-top: 69px;
-  }
-  footer{
-    background: url('../../../assets/mobile_footer-map.png') bottom left no-repeat;
-    background-size: contain;
-    height: 250px;
-  }
-  footer p{
-    bottom: 175px;
-    left: 12.5%;
-    width: 75%;
   }
 }

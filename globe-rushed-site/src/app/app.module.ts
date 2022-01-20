@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,7 @@ import { MainComponent } from './components/main/main.component';
 import { PlayComponent } from './components/play/play.component';
 import { UserComponent } from './components/user/user.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
     MainComponent,
     PlayComponent,
     UserComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,4 +31,7 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule{
+
+}

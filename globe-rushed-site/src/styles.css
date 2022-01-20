@@ -3,6 +3,7 @@
 /* Custom colors to use in Globe Rushed App */
 :root{
   --GR-red: #D7476D;
+  --GR-red-hover: rgb(253, 124, 159);
   --GR-orange: #EDAE41;
   --GR-yellow: #E9CE4A;
   --GR-green: #C1EA84;
@@ -12,10 +13,12 @@
   --GR-purple: #AF87CE;
   --GR-magenta: #EA1A7F;
   --GR-ink: #191312;
+  --GR-soft-ink: #696969;
 }
 /* Global tag styling */
 body{
   color: var(--ink);
+  background-color: #fbfbfb;
   font-family: "Roboto", Helvetica, sans-serif;
   padding: 0px;
   margin: 0px;
@@ -57,159 +60,8 @@ a:hover{
     width: 88%;
   }
 }
-@media only screen and (min-width: 1024px){
-  /* Begin NAV styling... */
-  nav{
-    text-align: right;
-    width: 100%;
+@media only screen and (min-width: 768px) and (max-width : 1023px){
+  .centered-content{
+    width: 75%;
   }
-  #navlinks{
-    background: none;
-    color: #181818;
-    position: absolute;
-    transition: all 0.45s;
-    z-index: 5;
-  }
-  #navlinks ul{
-    list-style-type: none;
-    margin: 17.5px;
-  }
-  #navlinks li{
-    display: inline;
-    margin: 0px 20px;
-  }
-  #navlinks li:last-of-type{
-    margin-right: 30px;
-  }
-  #navlinks li a{
-    color: var(--ink);
-    font-size: 16px;
-    font-weight: 300;
-    text-decoration: none;
-    transition: color 0.45s;
-  }
-  #navlinks li a:hover{
-    color: var(--GR-orange);
-  }
-  #navlinks.scrolldown_nav{
-    background: #FFFFFF !important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.09) !important;
-  }
-  #navlinks.scrolldown_nav li a{
-    color: var(--typewriter-ink) !important;
-  }
-  #nav_logo_img.scrolldown_nav{
-    height: 42px;
-  }
-  .navlinks_000 li a{
-    color: var(--typewriter-ink) !important;
-  }
-  .navlinks_fff li a{
-    color: #FFF !important;
-  }
-  .nav_000 li a{
-    color: #000 !important;
-    transition: color 0.45s;
-  }
-  .nav_000 li a:hover{
-    color: var(--cherrywood) !important;
-  }
-  /* ...end NAV CSS */
 }
-
-/* NAVIGATION MENU - phone & tablet */
-@media only screen and (max-width : 1023px){
-	/* NAV ELEMENT */
-	#navlinks{
-		position: absolute;
-		z-index: 9;
-	}
-	#nav_burgerbutton{
-		z-index: 10;
-		width: 100%;
-	}
-	#navlinks ul{
-		list-style-type: none;
-	}
-	#navlinks li{
-		display: inline;
-	}
-	/* OVERLAY */
-		.nav_overlay {
-			background-color: rgba(0,0,0, 0.9);
-			height: 100%;
-			margin: 0px;
-			overflow-x: hidden;
-			padding: 0px;
-			position: fixed !important;
-			top: 0;
-			left: 0;
-			text-transform: lowercase;
-			transition: 0.5s;
-			width: 0;
-			z-index: 99;
-		}
-		.nav_overlay-content {
-			margin-top: 30px;
-			position: relative;
-			text-align: center;
-			top: 10%;
-			width: 100%;
-		}
-		.nav_overlay a {
-			color: #818181;
-			display: block;
-			font-size: 36px;
-			padding: 8px;
-			text-decoration: none;
-			transition: 0.3s;
-			white-space: nowrap;
-		}
-		.nav_overlay a:hover, .nav_overlay a:focus {
-		  color: #f1f1f1;
-		}
-		.nav_overlay .closebtn {
-			font-size: 60px;
-			position: absolute;
-			top: 20px;
-			right: 45px;
-		}
-    .nav_overlay.show_nav{
-      width: 100%;
-    }
-		/* BURGER ICON */
-		/* Bar Form */
-		.nav-icon {
-			background: #FFFFFF;
-			border-radius: 50%;
-			position: fixed;
-			top: 1em;
-			right: 1em;
-			padding: 8px;
-			width: 40px;
-			z-index: 100;
-		}
-
-		.nav-icon:after,
-		.nav-icon:before,
-		.nav-icon div {
-		  background-color: var(--GR-red);
-		  border-radius: 3px;
-		  content: '';
-		  display: block;
-		  height: 5px;
-		  margin: 7px 0;
-		  transition: all .2s ease-in-out;
-		}
-
-		/* X Form */
-		.close-icon:before { /* Top */
-		  transform: translateY(12px) rotate(135deg) !important;
-		}
-		.close-icon div { /* Middle */
-		  transform: scale(0) !important;
-		}
-		.close-icon:after { /* Bottom */
-		  transform: translateY(-12px) rotate(-135deg) !important;
-		}
-	}

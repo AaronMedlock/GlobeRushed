@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  logoUrl = 'assets/grlogo.svg';
   constructor(public router: Router){}
 
   // Slide out the menu and turn the hamburger into an x

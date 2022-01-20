@@ -21,11 +21,11 @@
           <label>Username:</label>
           <input type="text" name="newUsername" [(ngModel)]="newUsername" id="newUsername" placeholder="What shall the world call you?" />
           <label>Email:</label>
-          <input type="text" name="newEmail" [(ngModel)]="newEmail" id="newEmail" placeholder="Where do we email you at?" />
+          <input type="text" name="newEmail" [(ngModel)]="newEmail" id="newEmail" placeholder="Where shall our email go?" />
           <label>Password:</label>
           <input type="password"  name="newPassword" [(ngModel)]="newPassword" id="newPassword" placeholder="Try and pick a good one..." />
           <label>Confirm Password:</label>
-          <input type="password"  name="newPasswordConfirm" [(ngModel)]="newPasswordConfirm" id="newPasswordConfirm" placeholder="You're almost there!" />
+          <input type="password"  name="newPasswordConfirm" [(ngModel)]="newPasswordConfirm" id="newPasswordConfirm" placeholder="...you're almost there!" />
           <input type="submit" value="Sign up and play!"/>
           <p class="toggle-login" (click)="toggleMenu($event)"><b>Already have an account?</b>Sign in now!</p>
         </form>

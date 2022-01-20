@@ -1,4 +1,11 @@
 <div *ngIf="router.url != '/play'">
+  <!-- MENU LOGO -->
+  <div *ngIf="router.url != '/' && router.url != '/main'">
+    <a routerLink="/main">
+     <img src="{{logoUrl}}" style="height: 50px; padding: 5px;" />
+    </a>
+  </div>
+
   <!-- MENU ICON -->
   <div id="nav_burgerbutton">
     <div class="nav-icon" (click)="toggleClass($event)" id="nav-icon-btn">

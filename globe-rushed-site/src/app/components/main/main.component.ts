@@ -35,7 +35,7 @@ export class MainComponent {//implements OnInit {
   doLogin() {
     let resp = this.jwtService.login(this.username, this.password);
     resp.subscribe(data => {
-      this.router.navigate(['/play']) // think of ways in which you would append this to the header
+      this.router.navigate(['/user']) // think of ways in which you would append this to the header
       console.log(data);
     },
     error => {

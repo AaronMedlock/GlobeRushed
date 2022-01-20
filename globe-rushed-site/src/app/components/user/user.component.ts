@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
+  headerDesktopDecoImg = 'assets/desktop_users-header-w-bg.svg';
+  userAvatar: string = '';
+  username: string = 'Username';
+  userxplvl: string = "Level 0 - Newbie";
+  userxp: number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

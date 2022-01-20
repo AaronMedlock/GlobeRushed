@@ -1,1 +1,62 @@
-<p>user works!</p>
+<header></header>
+<main id="user-profile">
+  <!-- User Information -->
+  <div id="user-info">
+    <div id="profile_avatar">
+      <i class="fas fa-user-astronaut"></i>
+    </div>
+    <h2 id="profile_username">{{username}}</h2>
+    <div id="xp-bar-outer">
+      <div id="xp-bar-inner" style="width: 50%;"></div>
+    </div>
+    <b>{{userxplvl}}</b>
+    <span>{{userxp}} points</span>
+  </div>
+
+  <!-- Launch a new game -->
+  <div id="profile_playgame" class="centered-content">
+    <h3>Play a new game</h3>
+    <div class="profile_playgame-card" routerLink="/play">
+      <img src="../../../assets/users-new-game-buttons_world.svg" />
+      <h4>World</h4>
+    </div>
+    <div class="profile_playgame-card" routerLink="/play">
+      <img src="../../../assets/users-new-game-buttons_pois.svg" />
+      <h4>Points of Interest</h4>
+    </div>
+  </div>
+    <!-- Friend Leaderboard -->
+  <div id="profile_friends" class="centered-content">
+    <h3>Friend Leaderboard</h3>
+    <div id="friend_leaderboard-container">
+      <div class="profile_friend-row">
+        <div class="profile_friend-trophy firstplace"><i class="fas fa-trophy"></i></div>
+        <div class="profile_friend-ranking">##</div>
+        <div class="profile_friend-avatar"><i class="fas fa-user-astronaut"></i></div>
+        <div class="profile_friend-username">Username</div>
+        <div class="profile_friend-rank">Level 0 - Newbie</div>
+        <div class="profile_friend-xp">0 points</div>
+      </div>
+
+      <div id="profile_friend-showall">
+        <span>See all friends</span>
+      </div>
+      <!--<table>
+        <tr class="profile_friend-row">
+          <td class="profile_friend-trophy" class="firstplace"><i class="fas fa-trophy"></i></td>
+          <td class="profile_friend-ranking">##</td>
+          <td class="profile_friend-avatar"><i class="fas fa-user-astronaut"></i></td>
+          <td class="profile_friend-username">Username</td>
+          <td class="profile_friend-rank">Level 0 - Newbie</td>
+          <td class="profile_friend-xp">0 points</td>
+        </tr>
+        <tr id="profile_friend-showall">
+          <td colspan="6">
+            <span>See all friends</span>
+          </td>
+        </tr>
+      </table>-->
+      <div id="profile_friend-add">Add a friend</div>
+    </div>
+  </div>
+</main>
