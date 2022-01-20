@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 import javax.persistence.Entity;

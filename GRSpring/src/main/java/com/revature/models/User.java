@@ -1,17 +1,12 @@
 package com.revature.models;
 
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +19,7 @@ public class User
 	private String username;
 	private String password;
 	private String email;
+	//List<User> friendList;
 	
 	 
 	public User() 
@@ -61,6 +57,16 @@ public class User
 	}
 	
 	
+//	public List<User> getFriendList()
+//	{
+//		return friendList;
+//	}
+//
+//	public void setFriendList(List<User> friendList)
+//	{
+//		this.friendList = friendList;
+//	}
+
 	public int getId() {
 		return id;
 	}
