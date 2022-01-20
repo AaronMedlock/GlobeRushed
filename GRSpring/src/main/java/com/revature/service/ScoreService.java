@@ -19,7 +19,7 @@ public class ScoreService
 	@Transactional()
 	public List<Score> findAll()
 	{
-		return scoreRepo.findAllScores().stream().collect(Collectors.toList());
+		return scoreRepo.findAll().stream().collect(Collectors.toList());
 	}
 	
 	@Transactional()
@@ -28,11 +28,6 @@ public class ScoreService
 		return scoreRepo.findByUser(user).stream().collect(Collectors.toList());
 	}
 	
-//	@Transactional
-//	public List<Score> findScoreByLocation(long latitude,long longitude)
-//	{
-//		return scoreRepo.findScoreByLocation(latitude, longitude).stream().collect(Collectors.toList());
-//	}
 	
 	@Transactional
 	public Score save(Score score)

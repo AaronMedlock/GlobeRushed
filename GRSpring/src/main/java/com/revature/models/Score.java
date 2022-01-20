@@ -23,7 +23,7 @@ public class Score
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long scoreId;
+	int scoreId;
 	int scoreValue;
 	
 	@ManyToOne
@@ -32,7 +32,9 @@ public class Score
 	long latitude;
 	long longitude;
 	
-	public Score(long scoreId, int scoreValue, User user, long latitude, long longitude)
+	public Score() {} 
+	
+	public Score(int scoreId, int scoreValue, User user, long latitude, long longitude)
 	{
 		super();
 		this.scoreId = scoreId;
@@ -56,7 +58,7 @@ public class Score
 		return scoreId;
 	}
 
-	public void setScoreId(long scoreId)
+	public void setScoreId(int scoreId)
 	{
 		this.scoreId = scoreId;
 	}
