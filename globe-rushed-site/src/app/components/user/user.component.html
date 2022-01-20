@@ -1,11 +1,11 @@
-<header></header>
-<main id="user-profile">
+<header *ngIf="isLoggedIn"></header>
+<main id="user-profile" *ngIf="isLoggedIn">
   <!-- User Information -->
   <div id="user-info">
     <div id="profile_avatar">
       <i class="fas fa-user-astronaut"></i>
     </div>
-    <h2 id="profile_username">{{username}}</h2>
+    <h2 id="profile_username">{{GRusername}}</h2>
     <div id="xp-bar-outer">
       <div id="xp-bar-inner" style="width: 50%;"></div>
     </div>
@@ -34,7 +34,7 @@
         <div class="profile_friend-ranking">##</div>
         <div class="profile_friend-avatar"><i class="fas fa-user-astronaut"></i></div>
         <div class="profile_friend-username">Username</div>
-        <div class="profile_friend-rank">Level 0 - Newbie</div>
+        <div class="profile_friend-rank">Newbie</div>
         <div class="profile_friend-xp">0 points</div>
       </div>
 
@@ -60,3 +60,4 @@
     </div>
   </div>
 </main>
+<div style="height: 75vh;" *ngIf="!isLoggedIn"></div>

@@ -11,6 +11,7 @@ import { PlayComponent } from './components/play/play.component';
 import { UserComponent } from './components/user/user.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { authInterceptorProviders } from './helper/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  //providers: []
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 

@@ -148,6 +148,7 @@ header{
 .profile_friend-rank{
   font-size: 14px;
   font-weight: 200;
+  text-align: center;
   width: 15%;
 }
 .profile_friend-xp{

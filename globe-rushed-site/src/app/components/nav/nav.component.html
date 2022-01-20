@@ -1,6 +1,6 @@
 <div *ngIf="router.url != '/play'">
   <!-- MENU LOGO -->
-  <div *ngIf="router.url != '/' && router.url != '/main'">
+  <div *ngIf="router.url != '/' && router.url != '/home'">
     <a routerLink="/main">
      <img src="{{logoUrl}}" style="height: 50px; padding: 5px;" />
     </a>
@@ -19,6 +19,7 @@
       <ul>
         <li><a routerLink="/main">Home</a></li>
         <li><a routerLink="/leaderboard">Leaderboard</a></li>
+        <li *ngIf="router.url == '/user'"><a (click)="logout()">logout</a></li>
       </ul>
     </div>
   </nav>

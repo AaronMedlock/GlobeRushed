@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,8 +9,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+
+  constructor(private tokenStorageService: TokenStorageService, public router: Router){}
+
   logoUrl = 'assets/grlogo.svg';
-  constructor(public router: Router){}
+  //isUserLoggedIn = this.authService.isUserLoggedIn();
+
 
   // Slide out the menu and turn the hamburger into an x
   // also vice versa
@@ -22,8 +28,14 @@ export class NavComponent implements OnInit {
     }
   }
 
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
+  }
+
   ngOnInit(): void {
 
   }
+
 
 }
