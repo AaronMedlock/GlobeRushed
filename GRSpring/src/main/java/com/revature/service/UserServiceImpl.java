@@ -1,29 +1,24 @@
 package com.revature.service;
 
-import java.util.HashSet;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.revature.models.User;
-import com.revature.repository.RoleRepository;
 import com.revature.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    
+    //@Autowired
+    //private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
 	@Override
 	public User save(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(new HashSet < > (roleRepository.findAll()));
+        //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 		return user;
 	}

@@ -14,52 +14,53 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "User")
+@Table(name = "users")
 public class User 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	 private String username;
-	 private String password;
-	 private String email;
-	 private Set<Role> roles;
+	private String username;
+	private String password;
+	private String email;
+	
 	 
-	public User() {
-		
+	public User() 
+	{
+		super();
 	}
 	
-	public User(int id, String username, String password, String email, Set<Role> roles)
+	public User(int id, String username, String password, String email)
 	{
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.roles = roles;
 	}
 
-	public User(int id, String username, String password, Set<Role> roles) {
+	public User(int id, String username, String password) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
-		
-		this.roles = roles;
 	}
-	
-
-	public User(String username, String password, Set<Role> roles) {
+	public User(String username,String password,String email)
+	{
 		super();
 		this.username = username;
 		this.password = password;
-		
-		this.roles = roles;
+		this.email = email;
+	}
+
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	public int getId() {
 		return id;
 	}
@@ -72,22 +73,17 @@ public class User
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPassword() {
+
+	public String getPassword()
+	{
 		return password;
 	}
-	public void setPassword(String password) {
+
+	public void setPassword(String password)
+	{
 		this.password = password;
 	}
-	
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	public Set<Role> getRoles() {
-		return roles;
-	}
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-	
+
 	public String getEmail()
 	{
 		return email;
@@ -101,12 +97,12 @@ public class User
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password 
-				 + ", roles=" + roles + "]";
+				 + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, password, roles, username);
+		return Objects.hash(id, password, username);
 	}
 
 	@Override
@@ -119,7 +115,6 @@ public class User
 			return false;
 		User other = (User) obj;
 		return Objects.equals(id, other.id) && Objects.equals(password, other.password)
-				&& Objects.equals(roles, other.roles)
 				&& Objects.equals(username, other.username);
 	}
 	 
