@@ -16,9 +16,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public User save(User user) 
-	{
-        userRepository.save(user);
-		return user;
+	{ 
+		return userRepository.save(user);
 	}
 
 	@Override
@@ -27,18 +26,10 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findByUsername(username);
 	}
 
-//	@Override
-//	public void deleteUser(int id)
-//	{
-//		//TODO
-//		
-//	}
-
 	@Override
 	public User findById(int id)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findById(id);
 	}
 
 }

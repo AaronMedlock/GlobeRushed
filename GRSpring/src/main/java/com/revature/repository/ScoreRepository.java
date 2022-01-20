@@ -12,7 +12,8 @@ import com.revature.models.User;
 @Repository
 public interface ScoreRepository extends JpaRepository<Score, Integer>
 {
-	public List<Score> findByUser(User user);
+	List<Score> findByUser(User user);
 	List<Score> findAll();
+	Score findById(int id);
 	Score save(Score score);
 }

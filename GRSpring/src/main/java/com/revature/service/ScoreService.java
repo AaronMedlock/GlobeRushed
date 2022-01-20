@@ -16,23 +16,27 @@ public class ScoreService
 	@Autowired
 	ScoreRepository scoreRepo;
 	
-	@Transactional()
+	@Transactional
 	public List<Score> findAll()
 	{
 		return scoreRepo.findAll().stream().collect(Collectors.toList());
 	}
 	
-	@Transactional()
+	@Transactional
 	public List<Score> findByUser(User user)
 	{
 		return scoreRepo.findByUser(user).stream().collect(Collectors.toList());
 	}
 	
+	@Transactional
+	public Score findById(int id)
+	{
+		return scoreRepo.findById(id);
+	}
 	
 	@Transactional
 	public Score save(Score score)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return scoreRepo.save(score);
 	}
 }
