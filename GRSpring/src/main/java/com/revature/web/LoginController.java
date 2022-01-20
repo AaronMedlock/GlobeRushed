@@ -6,10 +6,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.models.AuthRequest;
+import com.revature.models.User;
 import com.revature.repository.UserRepository;
+import com.revature.service.UserService;
 import com.revature.util.JwtUtil;
 
 @RestController
@@ -23,6 +26,9 @@ public class LoginController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private UserService userService;
 
 	/**
 	 * In order to access this end point, we need
@@ -30,8 +36,9 @@ public class LoginController {
 	 * method generateToken() which accepts a username and password.
 	 * @return
 	 */
-	@GetMapping("/")
-	public String login() {
+	@GetMapping("/login")
+	public String login() 
+	{
 		return "You've successfully logged in!";
 	}
 
@@ -50,6 +57,7 @@ public class LoginController {
 			
 		  	
 		} catch (Exception ex) {
+			System.out.println(userRepository.findAll());
 			ex.printStackTrace();
 			throw new Exception("invalid username/password");
 		}
@@ -59,6 +67,26 @@ public class LoginController {
 		 * of course) to return to the client
 		 */
 		return jwtUtil.generateToken(authRequest.getUsername());
+	}
+	
+	@PostMapping("/register")
+	public String registration(@RequestBody User newUser)
+	{
+		//find by username to check if exists
+		System.out.println(userRepository.findAll());
+		User checkUser = userService.findByUsername(newUser.getUsername());
+		
+		//save user if not exists
+		if(checkUser == null)
+		{
+			checkUser = userService.save(newUser);
+			return "User "+checkUser.getUsername()+" successfully created!";
+		}
+		else
+		{
+			return "Username already in use!";
+		}
+				
 	}
 	
 }
