@@ -1,16 +1,18 @@
-<!-- MENU ICON -->
-<div id="nav_burgerbutton">
-  <div class="nav-icon" (click)="toggleClass($event)" id="nav-icon-btn">
-    <div></div>
+<div *ngIf="router.url != '/play'">
+  <!-- MENU ICON -->
+  <div id="nav_burgerbutton">
+    <div class="nav-icon" (click)="toggleClass($event)" id="nav-icon-btn">
+      <div></div>
+    </div>
   </div>
-</div>
 
-<!-- MENU -->
-<nav id="navlinks" class="nav_overlay ">
-  <div class="nav_overlay-content">
-    <ul>
-      <li><a routerLink="/main">Home</a></li>
-      <li><a routerLink="/leaderboard">Leaderboard</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- MENU -->
+  <nav id="navlinks" class="nav_overlay ">
+    <div class="nav_overlay-content">
+      <ul>
+        <li><a routerLink="/main">Home</a></li>
+        <li><a routerLink="/leaderboard">Leaderboard</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>

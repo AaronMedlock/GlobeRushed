@@ -1,0 +1,48 @@
+/* Footer */
+footer{
+  background: url('../../../assets/footer-map.png') top right no-repeat;
+  background-size: contain;
+  font-weight: 300;
+  height: 200px;
+  margin-top: 125px;
+  position: relative;
+}
+footer p{
+  position: absolute;
+  bottom: 125px;
+  line-height: 1.5em;
+  text-align: center;
+  width: 100%;
+}
+.fas{
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  font-size: 22.5px;
+}
+.fa-heart{
+  background: linear-gradient(#e1298a, #b776c2);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.fa-mug-hot{
+  background: linear-gradient(#fbac15, #ed336c);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+
+
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width : 767px){
+  footer{
+    background: url('../../../assets/mobile_footer-map.png') bottom left no-repeat;
+    background-size: contain;
+    height: 250px;
+  }
+  footer p{
+    bottom: 175px;
+    left: 12.5%;
+    width: 75%;
+  }
+}
