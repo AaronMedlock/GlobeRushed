@@ -250,6 +250,8 @@ export class MainComponent implements OnInit {
        this.isEmailValid &&
        this.isPasswordValid){
         this.registrationButton.nativeElement.style.background = "#80DECD";
+    } else {
+      this.registrationButton.nativeElement.style.background = "#D7476D";
     }
   }
 
