@@ -51,7 +51,7 @@
   transition: 0.5s all;
 }
 #index_user-container > form > input[type = submit]:hover{
-  background-color: var(--GR-red-hover);
+  filter: brightness(120%);
 }
 #index_user-container > form > input::placeholder{
   font-size: 12px;
@@ -59,6 +59,12 @@
 #index_user-container > form > input:focus{
   outline: none;
   border: 2px solid #999;
+}
+.fieldIsValid{
+  border: 2px solid var(--GR-turquoise) !important;
+}
+.fieldIsNotValid{
+  border: 2px solid var(--GR-red) !important;
 }
 /* #index_user-container > form > input:invalid{
   outline: none;
@@ -92,10 +98,10 @@
 #main-login{
   top: 20%;
 }
-#main-registration{
+#mainregistration{
   top: 8%;
 }
-#main-registration span{
+#mainregistration span{
   color: var(--GR-red);
   font-family: 'Roboto', sans-serif;
   font-size: 14px;

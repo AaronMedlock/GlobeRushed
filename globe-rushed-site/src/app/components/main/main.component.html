@@ -13,10 +13,11 @@
         <input type="password" name="password" [(ngModel)]="form.password" #password="ngModel" id="password" placeholder="Shh... this is a secret" />
         <input type="submit" name="Login" value="Login and play!" (click)="doLogin()"/>
         <p class="toggle-login" (click)="toggleMenu($event)"><b>Don't have an account?</b>Register now!</p>
+        <div id="loginMessageBox" #loginMessageBox class="snackbar"></div>
       </form>
 
         <!-- User Registration box -->
-        <form id="main-registration" class="hide_index-container">
+        <form id="mainregistration" class="hide_index-container"  #mainregistration>
           <img src="{{headerLogoImage}}" id="headerLogoImage" />
 
           <label>Username:</label><span id="regUsernameMsg" #regUsernameMsg>(Enter at least 5 characters)</span>
@@ -27,16 +28,17 @@
           <input type="email" name="newEmail" [(ngModel)]="regForm.email" id="newEmail"
           placeholder="Where shall our email go?" (input)="testInput($event)" #newEmail required />
 
-          <label>Password:</label><span id="regPasswordMsg" #regPasswordMsg>(Enter at least 5 characters)</span>
+          <label>Password:</label><span id="regPasswordMsg" #regPasswordMsg>(Enter at least 5 characters...)</span>
           <input type="password"  name="newPassword" [(ngModel)]="regForm.passone" id="newPassword" minlength="5"
           placeholder="Try and pick a good one..." (input)="testInput($event)" #newPassword required />
 
-          <label>Confirm Password:</label><span id="regPasswordConfirmMsg" #regPasswordConfirmMsg>(Make this match)</span>
+          <label>Confirm Password:</label><span id="regPasswordConfirmMsg" #regPasswordConfirmMsg>(... and make this match)</span>
           <input type="password"  name="newPasswordConfirm" [(ngModel)]="regForm.passtwo" id="newPasswordConfirm" minlength="5"
           placeholder="...you're almost there!" (input)="testInput($event)" #newPasswordConfirm required />
 
-          <input type="submit" value="Sign up and play!" (click)="doRegister()"/>
+          <input type="submit" value="Sign up and play!" (click)="doRegister()" id="registrationButton" #registrationButton />
           <p class="toggle-login" (click)="toggleMenu($event)"><b>Already have an account?</b>Sign in now!</p>
+          <div id="registrationMessageBox" #registrationMessageBox class="snackbar"></div>
         </form>
     </div>
   </div>

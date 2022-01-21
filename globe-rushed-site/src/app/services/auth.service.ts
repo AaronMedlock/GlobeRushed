@@ -37,12 +37,13 @@ export class AuthService {
    * @returns observable as a result of POST request to api
    */
   register(user): Observable<any>{
+    console.log(user);
     return this.http.post(
       `${url}/register`, {
         username: user.username,
         email: user.email,
-        password: user.password
-      }, httpOptions );
+        password: user.passone
+      }, {responseType: 'text'} );
   }
 
   /**
