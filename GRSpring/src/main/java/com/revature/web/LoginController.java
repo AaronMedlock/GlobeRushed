@@ -37,7 +37,7 @@ public class LoginController {
 	 * @return
 	 */
 	@GetMapping("/login")
-	public String login() 
+	public String login()
 	{
 		return "You've successfully logged in!";
 	}

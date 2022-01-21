@@ -61,27 +61,22 @@ public class ScoreController
 	
 	/*
 	 * get the username of the current, send back the scores of his friends list
-	 * 
+	 * sort descending 50 max 
 	 */
-	@GetMapping
+	@GetMapping("/friendlist")
 	public ResponseEntity<List<Score>> getFriendListScores()
 	{
 		return null;	
 	}
 	
 	/*
-	 * 
+	 * take username, return total sum of scores by user
 	 */
-	@GetMapping
+	@GetMapping("/user")
 	public ResponseEntity<Integer> getUserScoreSum()
 	{
 		return null;
 	}
 	
-	@GetMapping("/friend")
-	public ResponseEntity<Score> getFriendLeaderboard()
-	{
-		return null;
-	}
 	
 }
