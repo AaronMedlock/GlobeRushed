@@ -3,6 +3,7 @@ package com.revature.models;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,9 @@ public class User
 	private String username;
 	private String password;
 	private String email;
-	//List<String> friendList;
+	
+	@ElementCollection
+	List<String> friendList;
 	
 	 
 	public User() 
@@ -28,13 +31,14 @@ public class User
 		super();
 	}
 	
-	public User(int id, String username, String password, String email)
+	public User(int id, String username, String password, String email,List<String> friendList)
 	{
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.friendList = friendList;
 	}
 
 	public User(int id, String username, String password) {
@@ -58,15 +62,15 @@ public class User
 	}
 	
 	
-//	public List<User> getFriendList()
-//	{
-//		return friendList;
-//	}
-//
-//	public void setFriendList(List<User> friendList)
-//	{
-//		this.friendList = friendList;
-//	}
+	public List<String> getFriendList()
+	{
+		return friendList;
+	}
+
+	public void setFriendList(List<String> friendList)
+	{
+		this.friendList = friendList;
+	}
 
 	public int getId() {
 		return id;
