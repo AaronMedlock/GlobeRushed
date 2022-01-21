@@ -37,6 +37,15 @@ nav{
   #navlinks li a:hover{
     color: var(--GR-orange);
   }
+  #logout-link{
+    margin: 0px 20px 0px 50px !important;
+  }
+  #logout-link a{
+    font-size: 14px !important;
+  }
+  #logout-link a:hover{
+    color: var(--GR-red) !important;
+  }
   #navlinks.scrolldown_nav{
     background: #FFFFFF !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.09) !important;
@@ -114,6 +123,13 @@ nav{
 		.nav_overlay a:hover, .nav_overlay a:focus {
 		  color: #f1f1f1;
 		}
+    #logout-link a{
+      font-size: 20px !important;
+      margin-top: 45px !important;
+    }
+    #logout-link a:hover{
+      color: var(--GR-red) !important;
+    }
 		.nav_overlay .closebtn {
 			font-size: 60px;
 			position: absolute;

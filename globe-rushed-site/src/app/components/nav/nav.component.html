@@ -19,7 +19,7 @@
       <ul>
         <li><a routerLink="/main">Home</a></li>
         <li><a routerLink="/leaderboard">Leaderboard</a></li>
-        <li *ngIf="router.url == '/user'"><a (click)="logout()">logout</a></li>
+        <li *ngIf="router.url == '/user'" id="logout-link"><a (click)="logout()">(logout)</a></li>
       </ul>
     </div>
   </nav>

@@ -21,14 +21,13 @@
 }
 #index_user-container > form > #headerLogoImage{
   display: block;
-  margin: 0px auto;
+  margin: 0px auto 18px auto;
   width: 200px;
 }
 #index_user-container > form > label{
-  display: block;
+
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
-  margin: 18px 0px 5px 7.5px;
 }
 #index_user-container > form > input{
   background: #FFFFFF;
@@ -39,6 +38,7 @@
   font-weight: 300;
   font-size: 1.05rem;
   margin: 0;
+  margin: 5px 0px 18px 7.5px;
   padding: 8px 15px;
   width: calc(100% - 34px);
 }
@@ -60,6 +60,10 @@
   outline: none;
   border: 2px solid #999;
 }
+/* #index_user-container > form > input:invalid{
+  outline: none;
+  border: 2px solid var(--GR-red);
+} */
 #index_user-container > form > input[type = submit]:focus{
   outline: none;
   border: none;
@@ -82,11 +86,21 @@
   right: -50vw !important;
   opacity: 0 !important;
 }
+.fa-check-circle{
+  color: var(--GR-green) !important;
+}
 #main-login{
   top: 20%;
 }
 #main-registration{
   top: 8%;
+}
+#main-registration span{
+  color: var(--GR-red);
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  margin: 0px 0px 0px 5px;
 }
 
 /* "About Us" info */

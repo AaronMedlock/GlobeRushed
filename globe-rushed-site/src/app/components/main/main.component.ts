@@ -1,7 +1,7 @@
 // import { Component, OnInit } from '@angular/core';
 // import { Router } from '@angular/router';
 // import { JwtClientService } from 'src/app/services/jwt-client.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -20,24 +20,42 @@ export class MainComponent implements OnInit {
   footerDecoImage = 'assets/footer-map.png';
   //siteUrl = this.router.url;
 
+  // Registration
+  regForm: any = {};
+  @ViewChild("regUsernameMsg") regUsernameMsg: ElementRef;
+  @ViewChild("regEmailMsg") regEmailMsg: ElementRef;
+  @ViewChild("regPasswordMsg") regPasswordMsg: ElementRef;
+  @ViewChild("regPasswordConfirmMsg") regPasswordConfirmMsg: ElementRef;
+  @ViewChild("newPassword") newPasswordInputField: ElementRef
+  @ViewChild("newPasswordConfirm") newPasswordConfirmInputField: ElementRef
+
+  // Login
   form: any = {};
+
+  // General
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   GRusername: string = "";
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService,
+    private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      //this.GRusername = this.tokenStorage.getUserInfo().sub;
     }
   }
 
+  /**
+   * DO LOGIN -
+   * Collect user input from the login form and
+   * attempt to log the user in (issuing a JWT
+   * in the process).
+   */
   doLogin(): void{
-    console.log(`Attempting login with...`);
-    console.log(this.form);
     this.authService.login(this.form).subscribe(
       data => {
         // Save JWT Token
@@ -60,37 +78,107 @@ export class MainComponent implements OnInit {
     );
   }
 
-  //
-  // // User login
-  // username: string = "";
-  // password: string = "";
-  //
-  //// User Registration
-  // newUsername: string = "";
-  // newEmail: string = "";
-  // newPassword: string = "";
-  // newPasswordConfirm: string = "";
-  //
-  //
-  //constructor(private jwtService: JwtClientService, private router: Router) { }
-  //
-  // ngOnInit() {
-  //     this.href = this.router.url;
-  //     console.log(this.router.url);
-  // }
-  //
-  //
-  // doLogin() {
-  //   let resp = this.jwtService.login(this.username, this.password);
-  //   resp.subscribe(data => {
-  //     this.router.navigate(['/user']) // think of ways in which you would append this to the header
-  //     console.log(data);
-  //   },
-  //   error => {
-  //     this.router.navigate(['/'])
-  //     console.log(error);
-  //   });
-  // }
+
+  /**
+   * DO REGISTER -
+   * Attempt to register a new
+   * user in the system.
+   */
+  doRegister(): void{
+    console.log(`Attempting register with...`);
+    console.log(this.regForm);
+    const passwordOne: string = this.regForm.passone,
+          passwordTwo: string = this.regForm.passtwo;
+    if(passwordOne == passwordTwo){
+      console.log(`${passwordOne} == ${passwordTwo}`);
+    }
+
+  }
+
+
+
+  /**
+   * TEST INPUT
+   * Tests registration input at each
+   * input entry in order to provide live
+   * feedback to user of its validity.
+   *
+   * @todo IMPROVE PASSWORD VALIDATION
+   * @param event An input field receiving input
+   */
+  testInput(event): void{
+    // Create function variables
+    let isEventTargetValid: boolean;
+    let messageElement: any;
+    let messagePrompt: string;
+
+    // Determine what is calling this function and
+    // validate its input
+    switch(event.target.id){
+      case "newUsername":
+        isEventTargetValid = event.target.checkValidity();
+        messageElement = this.regUsernameMsg.nativeElement;
+        messagePrompt = "(Enter at least 5 characters)";
+        break;
+
+      case "newEmail":
+        isEventTargetValid = event.target.checkValidity();
+        messageElement = this.regEmailMsg.nativeElement;
+        messagePrompt = "(Must be a valid email)";
+        break;
+
+      case "newPassword":
+        isEventTargetValid = event.target.checkValidity();
+        messageElement = this.regPasswordMsg.nativeElement;
+        messagePrompt = "(Enter at least 5 characters)";
+        break;
+
+      case "newPasswordConfirm":
+        if( event.target.value == this.newPasswordInputField.nativeElement.value
+            && event.target.value.length >= 5){
+          isEventTargetValid = true;
+        } else {
+          isEventTargetValid = false;
+        }
+        messageElement = this.regPasswordConfirmMsg.nativeElement;
+        messagePrompt = "(Make this match)";
+
+        break;
+    }
+
+    // Test the input for validity using
+    // collected info
+    this.testInputValidity(
+      isEventTargetValid,
+      messageElement,
+      messagePrompt
+    );
+
+  }
+
+
+
+    /**
+   * TEST INPUT VALIDITY -
+   * Test input validity in order to send it back to the user.
+   * @param isEventTargetValid boolean value of whether event is valid
+   * @param messageElement The HTML element to write a message to
+   * @param messagePrompt The message to write to the HTML element
+   */
+     testInputValidity(isEventTargetValid: boolean, messageElement, messagePrompt){
+      if(isEventTargetValid){
+        messageElement.innerHTML = `<i class="fas fa-check-circle"></i>`;
+        if( !(messageElement.style.color == "#80DECD") ){
+          messageElement.style.color = "#80DECD";
+        }
+      } else {
+        messageElement.innerHTML = messagePrompt;
+        if( !(messageElement.style.color == "#D7476D") ){
+          messageElement.style.color = "#D7476D";
+        }
+      }
+    }
+
 
   toggleMenu(event: any){
     let mainLogin = document.getElementById("main-login"),

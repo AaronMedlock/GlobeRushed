@@ -12,8 +12,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-//  http://ec2-3-82-127-19.compute-1.amazonaws.com/login
-//  http://ec2-3-82-127-19.compute-1.amazonaws.com/register
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
 
@@ -47,7 +45,12 @@ export class AuthService {
       }, httpOptions );
   }
 
-
+  /**
+   * IS USER LOGGED IN -
+   * Determine whether the visitor is in possession of a JWT from a
+   * previous login. This is particularly used with route guarding.
+   * @returns boolean value of whether or not the visitor is already logged in.
+   */
   isUserLoggedIn(): boolean{
     let token = this.tokenStorage.getToken();
     return (token) ? true : false;
