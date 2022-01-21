@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class User
 	private String username;
 	private String password;
 	private String email;
-	//List<User> friendList;
+	//List<String> friendList;
 	
 	 
 	public User() 

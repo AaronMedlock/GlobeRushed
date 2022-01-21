@@ -44,17 +44,39 @@ public class ScoreController
 		//sort in ascending order by score value
 		SortByScoreValue scoreComparator = new SortByScoreValue();
 		Collections.sort((List<Score>) allScores,scoreComparator);
-		//TODO:build a response for 50 json score objects
-		
-		
-		
-		return null;
+		Collections.reverse(allScores);
+		//build a list of only the first 50 scores
+		List<Score> topScores;
+		if(allScores.size() < 50)
+		{
+			topScores = allScores.subList(0, allScores.size());
+		}
+		else
+		{
+			topScores = allScores.subList(0, 50);
+		}
+		//send list as a response
+		return ResponseEntity.ok(topScores);
 	}
 	
-	@GetMapping("/friend")
-	public ResponseEntity<Score> getFriendLeaderboard()
+	/*
+	 * get the username of the current, send back the scores of his friends list
+	 * sort descending 50 max 
+	 */
+	@GetMapping("/friendlist")
+	public ResponseEntity<List<Score>> getFriendListScores()
+	{
+		return null;	
+	}
+	
+	/*
+	 * take username, return total sum of scores by user
+	 */
+	@GetMapping("/user")
+	public ResponseEntity<Integer> getUserScoreSum()
 	{
 		return null;
 	}
+	
 	
 }

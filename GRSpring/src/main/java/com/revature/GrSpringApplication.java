@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.revature.models.Score;
 import com.revature.models.User;
+import com.revature.repository.ScoreRepository;
 import com.revature.repository.UserRepository;
 
 @SpringBootApplication
@@ -18,6 +20,8 @@ public class GrSpringApplication {
 	// for sending values to DB
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	ScoreRepository scoreRepository;
 	
 	public static void main(String[] args) 
 	{
@@ -25,11 +29,21 @@ public class GrSpringApplication {
 	}
 	
 	@PostConstruct
-	public void initUsers() {
+	public void initUsers() 
+	{
+		System.out.println("Insert a test user");
 		userRepository.save(new User("thisUsername","thisPassword"));
-		
 		System.out.println(userRepository.findAll());
+		System.out.println("Insert a test score");
+		User defaultUser = userRepository.findByUsername("thisUsername");
+		for(int i = 0;i < 100;i++)
+		{
+			scoreRepository.save(new Score((i*36),defaultUser,1,1));
+		}
+		//scoreRepository.save(new Score(100,defaultUser,1,1));
+		System.out.println(scoreRepository.findAll());
 	}
+	
 	
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
