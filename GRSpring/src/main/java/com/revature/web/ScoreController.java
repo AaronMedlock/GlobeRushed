@@ -59,6 +59,25 @@ public class ScoreController
 		return ResponseEntity.ok(topScores);
 	}
 	
+	/*
+	 * get the username of the current, send back the scores of his friends list
+	 * 
+	 */
+	@GetMapping
+	public ResponseEntity<List<Score>> getFriendListScores()
+	{
+		return null;	
+	}
+	
+	/*
+	 * 
+	 */
+	@GetMapping
+	public ResponseEntity<Integer> getUserScoreSum()
+	{
+		return null;
+	}
+	
 	@GetMapping("/friend")
 	public ResponseEntity<Score> getFriendLeaderboard()
 	{
