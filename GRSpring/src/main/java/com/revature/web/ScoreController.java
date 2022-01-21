@@ -1,8 +1,8 @@
 package com.revature.web;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -34,9 +34,16 @@ public class ScoreController
 	 * be persisted
 	 */
 	@PostMapping("/add")
-	public ResponseEntity<Score> addScore(@RequestBody Score score)
+	public ResponseEntity<Score> addScore(@RequestBody Map<String,String> json)
 	{
-		return ResponseEntity.ok(scoreService.save(score));
+		User currentUser = userService.findByUsername(json.get("username"));
+		Integer scoreValue = (Integer.valueOf(json.get("score_value")));
+		Long latitude = Long.valueOf(json.get("latitude"));
+		Long longitude = Long.valueOf(json.get("longitude"));
+		
+		Score newScore = new Score(scoreValue,currentUser,latitude,longitude);
+		
+		return ResponseEntity.ok(scoreService.save(newScore));
 	}
 	
 	/*
@@ -86,7 +93,7 @@ public class ScoreController
 				friendSum += score.getScoreValue();
 			}
 			//add the sum to the list
-			
+			//TODO not finished!!
 			
 		}
 		return null;	
