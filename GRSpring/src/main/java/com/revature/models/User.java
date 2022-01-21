@@ -1,6 +1,5 @@
 package com.revature.models;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,38 +21,25 @@ public class User
 	private String username;
 	private String password;
 	private String email;
-<<<<<<< HEAD
 	
 	@ElementCollection
 	List<String> friendList;
-	
-	 
-=======
-	//List<User> friendList;/
-	private List<String> friendlist = new ArrayList<String>();
 
->>>>>>> b1cf89affcb8038c05e1fbc289e8efe9710d6b64
+
 	public User() 
 	{
 		super();
 	}
 	
-<<<<<<< HEAD
-	public User(int id, String username, String password, String email,List<String> friendList)
-=======
 	public User(int id, String username, String password, String email,List<String> friendlist)
->>>>>>> b1cf89affcb8038c05e1fbc289e8efe9710d6b64
+
 	{
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-<<<<<<< HEAD
 		this.friendList = friendList;
-=======
-		this.friendlist = friendlist;
->>>>>>> b1cf89affcb8038c05e1fbc289e8efe9710d6b64
 	}
 
 	public User(int id, String username, String password) {
@@ -76,34 +62,12 @@ public class User
 		this.password = password;
 	}
 	
-	
-<<<<<<< HEAD
-	public List<String> getFriendList()
-	{
+	public List<String> getFriendList() {
 		return friendList;
 	}
 
-	public void setFriendList(List<String> friendList)
-	{
-		this.friendList = friendList;
-=======
-//	public List<User> getFriendList()
-//	{
-//		return friendList;
-//	}
-//
-//	public void setFriendList(List<User> friendList)
-//	{
-//		this.friendList = friendList;
-//	}
-	
-	public List<String> getFriendlist() {
-		return friendlist;
-	}
-
-	public void setFriendlist(List<String> friendlist) {
-		this.friendlist = friendlist;
->>>>>>> b1cf89affcb8038c05e1fbc289e8efe9710d6b64
+	public void setFriendList(List<String> friendlist) {
+		this.friendList = friendlist;
 	}
 
 	public int getId() {
