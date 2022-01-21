@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,21 +21,22 @@ public class User
 	private String username;
 	private String password;
 	private String email;
-	//List<String> friendList;
-	
-	 
+	//List<User> friendList;/
+	private List<String> friendlist = new ArrayList<String>();
+
 	public User() 
 	{
 		super();
 	}
 	
-	public User(int id, String username, String password, String email)
+	public User(int id, String username, String password, String email,List<String> friendlist)
 	{
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.email = email;
+		this.friendlist = friendlist;
 	}
 
 	public User(int id, String username, String password) {
@@ -67,6 +69,14 @@ public class User
 //	{
 //		this.friendList = friendList;
 //	}
+	
+	public List<String> getFriendlist() {
+		return friendlist;
+	}
+
+	public void setFriendlist(List<String> friendlist) {
+		this.friendlist = friendlist;
+	}
 
 	public int getId() {
 		return id;
