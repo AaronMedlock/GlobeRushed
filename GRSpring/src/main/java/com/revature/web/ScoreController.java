@@ -1,6 +1,7 @@
 package com.revature.web;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,25 +79,32 @@ public class ScoreController
 	 * sort descending 50 max 
 	 */
 	@GetMapping("/friendlist/{username}")
-	public ResponseEntity<List<Score>> getFriendListScores(@PathVariable("username") String username)
+	public ResponseEntity<Map<String,Integer>> getFriendListScores(@PathVariable("username") String username)
 	{
 		User currentUser = userService.findByUsername(username);
-		List<String> userFriends = currentUser.getFriendList(); //List of all friend's usernames
-		//List<Integer> friendLeaderBoard = new ArrayList<Score>(); //find each friend, sum all their scores, add to list
-		for(String s : userFriends)
+		Map<String,Integer> friendResponse = new HashMap<String,Integer>();
+		List<String> userFriends = currentUser.getFriendList(); 
+		
+		for(String friendName : userFriends)
 		{
 			Integer friendSum = 0; //sum variable
-			User thisFriend = userService.findByUsername(s); //grab friend's User object
-			List<Score> friendScores = scoreService.findByUser(thisFriend); //get friend's Scores
-			for(Score score: friendScores) //iterate through friend's scores and add the value to sum
+			//grab friend's User object
+			User thisFriend = userService.findByUsername(friendName); 
+			//get friend's Scores
+			List<Score> friendScores = scoreService.findByUser(thisFriend); 
+			
+			//iterate through friend's scores and add the value to sum
+			for(Score score: friendScores) 
 			{
 				friendSum += score.getScoreValue();
 			}
+			
 			//add the sum to the list
-			//TODO not finished!!
+			friendResponse.put(friendName, friendSum);					
 			
 		}
-		return null;	
+		//send a map of values <Username,friendSum>
+		return ResponseEntity.ok(friendResponse);	
 	}
 	
 	/*

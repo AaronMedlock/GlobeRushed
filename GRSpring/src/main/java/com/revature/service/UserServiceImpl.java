@@ -32,10 +32,14 @@ public class UserServiceImpl implements UserService {
 	{
 		return userRepository.findById(id);
 	}
-	
-	public List<User> addFriendList()
+
+	@Override
+	public User addFriendByUsername(String username, String friendName)
 	{
-		return null;
+		//retrieve the user and rebuild with the new friendlist
+		User thisUser = findByUsername(username);
+		thisUser.getFriendList().add(friendName);
+		return save(thisUser);
 	}
 
 }
