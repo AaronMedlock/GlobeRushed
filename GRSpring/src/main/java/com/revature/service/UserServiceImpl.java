@@ -1,6 +1,7 @@
 package com.revature.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,10 +33,20 @@ public class UserServiceImpl implements UserService {
 	{
 		return userRepository.findById(id);
 	}
-	
-	public List<User> addFriendList()
+
+	@Override
+	public User addFriendByUsername(String username, String friendName)
 	{
-		return null;
+		//retrieve the user and rebuild with the new friendlist
+		User thisUser = findByUsername(username);
+		thisUser.getFriendList().add(friendName);
+		return save(thisUser);
+	}
+
+	@Override
+	public List<User> findAll()
+	{		
+		return userRepository.findAll().stream().collect(Collectors.toList());
 	}
 
 }

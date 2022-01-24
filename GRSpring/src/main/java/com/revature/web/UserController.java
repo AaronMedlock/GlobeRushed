@@ -1,6 +1,8 @@
 package com.revature.web;
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,7 +18,7 @@ import com.revature.service.UserService;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = "*", allowedHeaders = "*") //TODO change to spring security compliant configuration
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController 
 {
 	@Autowired
@@ -27,6 +29,22 @@ public class UserController
 	{ 
 		return ResponseEntity.ok(userService.save(u)); 
 	}
+	/*
+	 * Spring should recieve a json object with two strings the calling user's username
+	 * as well as the username of the friend to be added
+	 * {
+	 * 	"username":"u",
+	 * 	"friend_name":"f"
+	 * }
+	 */
+	@PostMapping("/add/friend") //TODO untested
+	public ResponseEntity<User> addFriend(@RequestBody Map<String,String> jsonResponse)
+	{
+		String username = jsonResponse.get("username");
+		String friendName = jsonResponse.get("friend_name");
+		//call userservice function, adds friend and returns the updated user back
+		return ResponseEntity.ok(userService.addFriendByUsername(username, friendName));
+	}
 	
 	@GetMapping("/find/{username}")  // localhost:5000/users/find/spongebob <- we extract this parameter
 	public ResponseEntity<User> findByUsername(@PathVariable("username") String username) 
@@ -34,7 +52,7 @@ public class UserController
 		return ResponseEntity.ok(userService.findByUsername(username));
 	}
 	
-	@GetMapping("")
+	@GetMapping("/find/{id}") //TODO untested
 	public ResponseEntity<User> findById(@PathVariable("id") int id)
 	{
 		return ResponseEntity.ok(userService.findById(id));
