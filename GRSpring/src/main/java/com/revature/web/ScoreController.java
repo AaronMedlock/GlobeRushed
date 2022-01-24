@@ -2,8 +2,10 @@ package com.revature.web;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,6 @@ import com.revature.models.Score;
 import com.revature.models.User;
 import com.revature.service.ScoreService;
 import com.revature.service.UserService;
-import com.revature.util.SortByScoreValue;
 
 @RestController
 @RequestMapping("/score")
@@ -52,26 +53,29 @@ public class ScoreController
 	 * 
 	 */
 	@GetMapping("/global")
-	public ResponseEntity<List<Score>> getGlobalLeaderboard()
+	public ResponseEntity<Map<String,Integer>> getGlobalLeaderboard() //TODO change to lifetime score
 	{
-		//retrieve all the scores
-		List<Score> allScores = scoreService.findAll();
-		//sort in ascending order by score value
-		SortByScoreValue scoreComparator = new SortByScoreValue();
-		Collections.sort((List<Score>) allScores,scoreComparator);
-		Collections.reverse(allScores);
-		//build a list of only the first 50 scores
-		List<Score> topScores;
-		if(allScores.size() < 50)
+		//retrieve all the users
+		List<User> allUsers = userService.findAll();
+		Map<String,Integer> unsortedScores = new HashMap<String,Integer>();
+		//sum all scores by user
+		for(User currentUser : allUsers)
 		{
-			topScores = allScores.subList(0, allScores.size());
+			List<Score> allUserScores = scoreService.findByUser(currentUser);
+			Integer scoreSum = 0;
+			for(Score thisScore: allUserScores)
+			{
+				scoreSum += thisScore.getScoreValue();
+			}
+			unsortedScores.put(currentUser.getUsername(), scoreSum);
 		}
-		else
-		{
-			topScores = allScores.subList(0, 50);
-		}
+		//all users in map, sort descending
+		Map<String,Integer> globalLeaderboard = unsortedScores.entrySet().stream()
+				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).limit(50)
+				.collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
+		
 		//send list as a response
-		return ResponseEntity.ok(topScores);
+		return ResponseEntity.ok(globalLeaderboard);
 	}
 	
 	/*

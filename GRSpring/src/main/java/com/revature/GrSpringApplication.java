@@ -31,14 +31,18 @@ public class GrSpringApplication {
 	@PostConstruct
 	public void initUsers() 
 	{
-		System.out.println("Insert a test user");
+		System.out.println("Insert test users");
 		userRepository.save(new User("thisUsername","thisPassword"));
+		userRepository.save(new User("John","johnspassword"));
 		System.out.println(userRepository.findAll());
-		System.out.println("Insert a test score");
+		System.out.println("Insert test scores");
+		
+		User userJohn = userRepository.findByUsername("John");
 		User defaultUser = userRepository.findByUsername("thisUsername");
 		for(int i = 0;i < 100;i++)
 		{
 			scoreRepository.save(new Score((i*36),defaultUser,1,1));
+			scoreRepository.save(new Score((i*22),userJohn,10,2));
 		}
 		//scoreRepository.save(new Score(100,defaultUser,1,1));
 		System.out.println(scoreRepository.findAll());

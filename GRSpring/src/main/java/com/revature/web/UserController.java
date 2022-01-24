@@ -37,7 +37,7 @@ public class UserController
 	 * 	"friend_name":"f"
 	 * }
 	 */
-	@PostMapping("/add/friend")
+	@PostMapping("/add/friend") //TODO untested
 	public ResponseEntity<User> addFriend(@RequestBody Map<String,String> jsonResponse)
 	{
 		String username = jsonResponse.get("username");
@@ -52,7 +52,7 @@ public class UserController
 		return ResponseEntity.ok(userService.findByUsername(username));
 	}
 	
-	@GetMapping("/find/{id}")
+	@GetMapping("/find/{id}") //TODO untested
 	public ResponseEntity<User> findById(@PathVariable("id") int id)
 	{
 		return ResponseEntity.ok(userService.findById(id));
