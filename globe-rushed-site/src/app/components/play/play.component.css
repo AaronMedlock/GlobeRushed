@@ -1,20 +1,102 @@
+#gameContainer{
+  display: flex;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
 #streetViewport{
+  background-color: #000;
   display: inline-block;
+  height: 100vh;
   width: 66%;
 }
 #answersViewport{
   display: inline-block;
+  width: 33%;
+}
+#playGlobeRushedLogo{
+  height: 50px;
+  padding: 5px;
+  position: absolute;
+  top: 2.5%;
+  right: 2.5%;
+}
+#gr-timer{
+  display: block;
+  margin: 20% auto 10px auto;
+  position: relative;
+  width: 135px;
+}
+#gametimersvg{
+  shape-rendering: crispEdges;
+  transition: 1s all;
+}
+#gametimersvg.gameStarting{
+  fill: url(#gameStarting);
+}
+#gametimersvg.gameMiddle{
+  fill: url(#gameMiddle);
+}
+#gametimersvg.gameEnding{
+  fill: url(#gameEnding);
+}
+#gameTimerCountdown{
+  color: #FFFFFF;
+  font-size: 65px;
+  font-weight: 800;
+  margin-top: -110px;
+  text-align: center;
+  width: 100%;
+}
+#answersViewport h2{
+  color: var(--GR-ink);
+  font-weight: 500;
+  margin-top: 50px;
+  text-align: center;
+  width: 100%;
+}
+.fa-gamepad{
+  background: linear-gradient(#80DECD, #9BE7AF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  font-size: 20px;
+}
+#answersContainer{
+  margin: 10% 0px;
+}
+.answerPill{
+  color: #FFF;
+  cursor: pointer;
+  display: block;
+  background-color: #3d3d3d;
+  border-radius: 50px;
+  padding: 15px 10px;
+  margin: 5% auto;
+  min-width: 150px;
+  transition: 1s all;
+  width: 75%;
+}
+.answerPill:hover{
+  background: linear-gradient(var(--GR-blue), var(--GR-turquoise));
+}
+.answerPill > b{
+  font-weight: 500;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
-
-/* @media only screen and (min-width: 320px) and (max-width : 767px){
+@media only screen and (min-width: 320px) and (max-width : 1023px){ /* 1023px */
   #streetViewport{
     display: block;
-    height: 50%;
+    height: 50vh;
     width: 100%;
   }
+
   #answersViewport{
     display: block;
     width: 100%;
   }
-} */
+  #playGlobeRushedLogo{
+    display: none;
+  }
+}

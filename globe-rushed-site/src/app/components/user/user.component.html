@@ -1,5 +1,5 @@
-<header *ngIf="isLoggedIn"></header>
-<main id="user-profile" *ngIf="isLoggedIn">
+<header></header>
+<main id="user-profile">
   <!-- User Information -->
   <div id="user-info">
     <div id="profile_avatar">
@@ -41,23 +41,7 @@
       <div id="profile_friend-showall">
         <span>See all friends</span>
       </div>
-      <!--<table>
-        <tr class="profile_friend-row">
-          <td class="profile_friend-trophy" class="firstplace"><i class="fas fa-trophy"></i></td>
-          <td class="profile_friend-ranking">##</td>
-          <td class="profile_friend-avatar"><i class="fas fa-user-astronaut"></i></td>
-          <td class="profile_friend-username">Username</td>
-          <td class="profile_friend-rank">Level 0 - Newbie</td>
-          <td class="profile_friend-xp">0 points</td>
-        </tr>
-        <tr id="profile_friend-showall">
-          <td colspan="6">
-            <span>See all friends</span>
-          </td>
-        </tr>
-      </table>-->
       <div id="profile_friend-add">Add a friend</div>
     </div>
   </div>
 </main>
-<div style="height: 75vh;" *ngIf="!isLoggedIn"></div>

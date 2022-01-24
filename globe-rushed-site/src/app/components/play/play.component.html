@@ -1,13 +1,41 @@
-<div id="gameContainer" #gameContainer style="display: block; height: 100vh; margin: 0px; padding: 0px;">
-  <div id="streetViewport" #streetViewport style="height: 100vh; background-color: #000;">
+<div id="gameContainer" #gameContainer>
+  <div id="streetViewport" #streetViewport style="background: url('{{demoimg}}') no-repeat; background-size: cover;">
     <google-map
-      height="100vh"
-      width="100%" >
+      id="gameViewport"
+      #gameViewport
+      height="100%"
+      width="100%">
     </google-map>
   </div>
   <div id="answersViewport" #answersViewport>
-    <div>
-      <img src="{{logoUrl}}" style="height: 50px; padding: 5px; position: absolute; top: 2.5%; right: 2.5%;" />
+    <img src="{{logoUrl}}" id="playGlobeRushedLogo" />
+    <div id="gr-timer">
+      <svg id="gameTimerIcon" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 416.03 512">
+        <path d="M432,304c0,114.9-93.1,208-208,208S16,418.9,16,304A207.9,207.9,0,0,1,192,98.5V64H164a12,12,0,0,1-12-12V12A12,12,0,0,1,164,0H284a12,12,0,0,1,12,12V52a12,12,0,0,1-12,12H256V98.5a206.73,206.73,0,0,1,99.7,44.6l27.5-27.5a12,12,0,0,1,17,0l28.3,28.3a12,12,0,0,1,0,17l-29.4,29.4-.6.6A205.92,205.92,0,0,1,432,304Z"
+        transform="translate(-16)" id="gametimersvg" #gametimersvg />
+        <defs>
+          <linearGradient id="gameStarting">
+            <stop offset="0%" stop-color="#80DECD" />
+            <stop offset="95%" stop-color="#9BE7AF" />
+          </linearGradient>
+          <linearGradient id="gameMiddle">
+            <stop offset="0%" stop-color="#C1EA84" />
+            <stop offset="95%" stop-color="#E9CE4A" />
+          </linearGradient>
+          <linearGradient id="gameEnding">
+            <stop offset="0%" stop-color="#EDAE41" />
+            <stop offset="95%" stop-color="#D7476D" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div id="gameTimerCountdown" #gameTimerCountdown>10</div>
+    </div>
+    <h2>Where are you?</h2>
+    <div id="answersContainer">
+      <div id="answerA" class="answerPill"><b>A</b>{{answerA}}</div>
+      <div id="answerB" class="answerPill"><b>B</b>{{answerB}}</div>
+      <div id="answerC" class="answerPill"><b>C</b>{{answerC}}</div>
+      <div id="answerD" class="answerPill"><b>D</b>{{answerD}}</div>
     </div>
   </div>
 </div>

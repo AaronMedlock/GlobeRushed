@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'leaderboard', component: LeaderboardComponent},
   {path: 'leaders', component: LeaderboardComponent},
 
-  {path: '**', component: MainComponent},
+  {path: '**', component: MainComponent, canActivate: [UserAlreadyLoggedInGuard]},
 ];
 
 @NgModule({

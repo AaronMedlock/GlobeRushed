@@ -14,6 +14,7 @@ import { LeaderboardComponent } from './components/leaderboard/leaderboard.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { authInterceptorProviders } from './helper/auth.interceptor';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,14 +23,14 @@ import { authInterceptorProviders } from './helper/auth.interceptor';
     PlayComponent,
     UserComponent,
     LeaderboardComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    GoogleMapsModule
+    GoogleMapsModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
