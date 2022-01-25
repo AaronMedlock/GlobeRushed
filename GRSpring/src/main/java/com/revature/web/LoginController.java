@@ -3,6 +3,7 @@ package com.revature.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import com.revature.service.UserService;
 import com.revature.util.JwtUtil;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LoginController {
 
 	@Autowired

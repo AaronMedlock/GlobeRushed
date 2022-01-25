@@ -37,11 +37,11 @@ public class WebSecurityConfig extends  WebSecurityConfigurerAdapter {
 	    
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception {
-	    	http.cors(); // The cors() method will add the Spring-provided CorsFilter to 
-	        http.csrf()  // the application context which in turn bypasses the authorization
+	    	//http.cors(); // The cors() method will add the Spring-provided CorsFilter to 
+	        http.cors().and().csrf()  // the application context which in turn bypasses the authorization
 	        .disable()   // checks for OPTIONS requests.
 	        .authorizeRequests()
-	        .antMatchers("/authenticate","/register","/score/global")
+	        .antMatchers("/authenticate","/register","/score/global","/score/friendlist/*")
 	        .permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
 	                .permitAll().anyRequest().authenticated()
 	                .and().exceptionHandling().and().sessionManagement()

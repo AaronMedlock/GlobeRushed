@@ -53,6 +53,13 @@ public class Score
 		this.longitude = longitude;
 	}
 	
+	public Score(int scoreValue,User user)
+	{
+		super();
+		this.scoreValue = scoreValue;
+		this.user = user;
+	}
+	
 	public long getScoreId()
 	{
 		return scoreId;

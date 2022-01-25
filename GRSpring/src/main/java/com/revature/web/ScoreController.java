@@ -3,12 +3,14 @@ package com.revature.web;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,7 @@ import com.revature.service.UserService;
 
 @RestController
 @RequestMapping("/score")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ScoreController
 {
 	@Autowired
@@ -40,10 +43,10 @@ public class ScoreController
 	{
 		User currentUser = userService.findByUsername(json.get("username"));
 		Integer scoreValue = (Integer.valueOf(json.get("score_value")));
-		Long latitude = Long.valueOf(json.get("latitude"));
-		Long longitude = Long.valueOf(json.get("longitude"));
+		//Long latitude = Long.valueOf(json.get("latitude"));
+		//Long longitude = Long.valueOf(json.get("longitude"));
 		
-		Score newScore = new Score(scoreValue,currentUser,latitude,longitude);
+		Score newScore = new Score(scoreValue,currentUser);
 		
 		return ResponseEntity.ok(scoreService.save(newScore));
 	}
@@ -83,17 +86,20 @@ public class ScoreController
 	 * sort descending 50 max 
 	 */
 	@GetMapping("/friendlist/{username}")
-	public ResponseEntity<Map<String,Integer>> getFriendListScores(@PathVariable("username") String username)
-	{
+	public ResponseEntity<List<User>> getFriendListScores(@PathVariable("username") String username)
+	{	
 		User currentUser = userService.findByUsername(username);
-		Map<String,Integer> friendResponse = new HashMap<String,Integer>();
 		List<String> userFriends = currentUser.getFriendList(); 
+		List<User> friendListAsUser = new LinkedList<User>();
 		
 		for(String friendName : userFriends)
 		{
+			User thisFriend = userService.findByUsername(friendName); 
+			friendListAsUser.add(thisFriend);
+			
 			Integer friendSum = 0; //sum variable
 			//grab friend's User object
-			User thisFriend = userService.findByUsername(friendName); 
+			
 			//get friend's Scores
 			List<Score> friendScores = scoreService.findByUser(thisFriend); 
 			
@@ -104,11 +110,12 @@ public class ScoreController
 			}
 			
 			//add the sum to the list
-			friendResponse.put(friendName, friendSum);					
+			
+			thisFriend.setScoreTotal(friendSum);			
 			
 		}
 		//send a map of values <Username,friendSum>
-		return ResponseEntity.ok(friendResponse);	
+		return ResponseEntity.ok(friendListAsUser);	
 	}
 	
 	/*
