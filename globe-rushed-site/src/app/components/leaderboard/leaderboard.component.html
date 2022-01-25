@@ -10,13 +10,12 @@
   <div id="profile_friends" class="centered-content">
 
     <div id="friend_leaderboard-container">
-      <div class="profile_friend-row">
+      <div class="profile_friend-row" *ngFor='let user of friendList; let i = index'>
         <div class="profile_friend-trophy firstplace"><i class="fas fa-trophy"></i></div>
-        <div class="profile_friend-ranking">##</div>
+        <div class="profile_friend-ranking">{{i+1}}</div>
         <div class="profile_friend-avatar"><i class="fas fa-user-astronaut"></i></div>
-        <div class="profile_friend-username">Username</div>
-        <div class="profile_friend-rank">Newbie</div>
-        <div class="profile_friend-xp">0 points</div>
+        <div class="profile_friend-username">{{user.username}}</div>
+        <div class="profile_friend-xp">{{user.scoreTotal}} points</div>
       </div>
     </div>
   </div>

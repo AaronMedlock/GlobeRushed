@@ -15,6 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
 
+
   /**
    * LOGIN -
    * Validate the user's credentials against the backend
@@ -46,6 +47,7 @@ export class AuthService {
       }, {responseType: 'text'} );
   }
 
+
   /**
    * IS USER LOGGED IN -
    * Determine whether the visitor is in possession of a JWT from a
@@ -55,5 +57,25 @@ export class AuthService {
   isUserLoggedIn(): boolean{
     let token = this.tokenStorage.getToken();
     return (token) ? true : false;
+  }
+
+  getFriendLeaderboard(user,friendList): Observable<any>
+  {
+    //let token = this.tokenStorage.getUser();
+    //let tokenStr = `Bearer ${token}`;
+    //console.log(tokenStr);
+
+    return this.http.get(
+      `${url}/score/friendlist/${user}`,
+      {responseType: 'json'}
+    );
+  }
+
+  getGlobalLeaderboard():Observable<any>
+  {
+    return this.http.get(
+      `${url}/score/global`,
+      {responseType:'json'}
+    );
   }
 }
