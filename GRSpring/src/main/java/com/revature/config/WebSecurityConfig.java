@@ -41,7 +41,7 @@ public class WebSecurityConfig extends  WebSecurityConfigurerAdapter {
 	        http.cors().and().csrf()  // the application context which in turn bypasses the authorization
 	        .disable()   // checks for OPTIONS requests.
 	        .authorizeRequests()
-	        .antMatchers("/authenticate","/register","/score/global","/score/friendlist/*","score/user/*")
+	        .antMatchers("/authenticate","/register","/score/global","/score/friendlist/*","/score/user/*")
 	        .permitAll().antMatchers(HttpMethod.OPTIONS, "/**")
 	                .permitAll().anyRequest().authenticated()
 	                .and().exceptionHandling().and().sessionManagement()
