@@ -84,19 +84,51 @@
   margin-left: 10px;
   margin-right: 20px;
 }
+#returnToUserMenu{
+  text-align: center;
+  width: 100%;
+}
 
 @media only screen and (min-width: 320px) and (max-width : 1023px){ /* 1023px */
+  #gameContainer{
+    display: block;
+  }
   #streetViewport{
     display: block;
     height: 50vh;
     width: 100%;
   }
-
   #answersViewport{
     display: block;
     width: 100%;
   }
   #playGlobeRushedLogo{
     display: none;
+  }
+  #playGlobeRushedLogo{
+    height: 20px;
+    padding: 5px;
+    position: absolute;
+    top: 1.5%;
+    right: 1.5%;
+  }
+  #gr-timer{
+    display: block;
+    margin: 1.5% auto 10px auto;
+    position: relative;
+    width: 50px;
+  }
+  #gameTimerCountdown{
+    font-size: 29px;
+    margin-top: -44px;
+  }
+  #answersContainer{
+    margin: 0px;
+  }
+  #answersViewport h2{
+    display: none;
+  }
+  .answerPill{
+    padding: 1.5% 10px;
   }
 }

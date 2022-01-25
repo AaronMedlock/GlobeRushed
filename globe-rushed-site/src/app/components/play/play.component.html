@@ -32,10 +32,15 @@
     </div>
     <h2>Where are you?</h2>
     <div id="answersContainer">
-      <div id="answerA" class="answerPill"><b>A</b>{{answerA}}</div>
-      <div id="answerB" class="answerPill"><b>B</b>{{answerB}}</div>
-      <div id="answerC" class="answerPill"><b>C</b>{{answerC}}</div>
-      <div id="answerD" class="answerPill"><b>D</b>{{answerD}}</div>
+      <div  class="answerPill" (click)="checkAnswer(answerAVal)" id="answerA" #answerA><b>A</b>{{answerAVal}}</div>
+      <div class="answerPill" (click)="checkAnswer(answerBVal)" id="answerB" #answerB><b>B</b>{{answerBVal}}</div>
+      <div class="answerPill" (click)="checkAnswer(answerCVal)" id="answerC" #answerC><b>C</b>{{answerCVal}}</div>
+      <div class="answerPill" (click)="checkAnswer(answerDVal)" id="answerD" #answerD><b>D</b>{{answerDVal}}</div>
+      <div id="gameInfoMessageBox" #gameInfoMessageBox class="snackbar"></div>
+    </div>
+
+    <div id="returnToUserMenu">
+      <a routerLink="/user"><i class="fas fa-undo-alt"></i> I'm ready to take a break.</a>
     </div>
   </div>
 </div>

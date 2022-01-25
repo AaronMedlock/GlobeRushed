@@ -60,4 +60,24 @@ export class DialogBoxService {
   }
 
 
+
+
+/**
+ * ADD SNACKBAR
+ * Add a snackbar to the bottom of the page
+ * @param element The snackbar element on the page
+ * @param timeout The timeout desired. Default is 3000ms
+ */
+   addSnackbar(element: Element, timeout: number = 3000, positionClass: string = "sbcenter"){
+    element.classList.add(positionClass);
+    element.classList.add("show");
+    setTimeout(() => {
+      element.classList.remove("show");
+    }, timeout);
+  }
+
+
+/**
+ *
+ */
 }

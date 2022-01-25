@@ -5,6 +5,52 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocationsService {
+  // Currated dummy data
+  curratedLocations = [
+    { lat: 53.484787, lng: -2.317712, name: "Salford, United Kingdom"},
+    { lat: -32.0106441, lng: 115.7522977, name: "Perth, Australia"},
+    { lat: 35.7040744, lng: 139.5577317, name: "Tokyo, Japan"},
+    { lat: 44.2744468, lng: -77.742858, name: "Harcourt, Ontario Canada"},
+    { lat: 30.2417765, lng: -97.7268773, name: "Austin,TX USA"},
+    { lat: 60.3608533, lng: 5.3696853, name: "Bergen, Norway" },
+    { lat: 38.9527529, lng: -77.3508511, name: "Reston, VA USA"},
+    { lat: 47.907979, lng: 1.967564, name: "Saint-Jean-de-Braye, France" },
+    { lat: 36.117093, lng: -115.182074, name: "Las Vegas, NV USA" },
+    { lat: 24.482446, lng: 118.316943, name: "Jinning Township"},
+    { lat: -26.938312, lng: -68.74491499999999, name: "Watford, United Kingdom"},
+    { lat: 60.534114, lng: -149.55007899999998, name: "Moose Pass, AK USA" },
+    { lat: 60.070409, lng: 6.542388999999957, name: "Odda, Norway" },
+    { lat: 75.4081407, lng: -89.5874263, name: "Nunavut, Canada"},
+    { lat: 30.184983, lng: -84.72466199999997, name: "Liberty County, FL USA" },
+    { lat: 36.252972, lng: 136.90053699999999, name: "Gifu, Japan" },
+    { lat: 27.814125, lng: 86.713193, name: "Khumjung, Nepal"},
+    { lat: 36.2381539, lng: 137.9683151, name: "Nagano, Japan"},
+    //{ lat: 64.0444798, lng: -16.1711884, name: "Eastern Region, Iceland"}, // Fails SV
+    { lat: 42.658402, lng: 11.633269, name: "Province of Grosseto, Italy"},
+    { lat: 30.3248983, lng: 35.4471292, name: "Wadi Musa, Jordan"},
+    { lat: 47.51075, lng: 10.390309, name: "Bad Hindelang, Germany"},
+    { lat: 53.043081, lng: 57.064946, name: "Republic of Bashkortostan, Russia"},
+    { lat: -8.4226166, lng: 115.3124971, name: "Bali, Indonesia" },
+    { lat: 35.659607, lng: 139.700378, name: "Shibuya City, Tokyo, Japan" },
+    //{ lat: 50.087586, lng: 14.421231, name: "Prague, Czechia" }, // Fails SV
+    { lat: -13.165713, lng: -72.545542, name: "Aguas Calientes, Peru" },
+    { lat: 41.403286, lng: 2.174673, name: "Barcelona, Spain" },
+    { lat: 34.2752105, lng: -119.2913408, name: "Ventura, CA USA"},
+    { lat: -14.251967, lng: -170.689851, name: "Tafeu Cove, American Samoa"},
+    { lat: 33.461503, lng: 126.939297, name: "Jeju-do, South Korea" },
+    { lat: -64.731988, lng: -62.594564, name: "Danco Island, Antarctica" },
+    { lat: 27.17557, lng: 78.041462, name: "Uttar Pradesh, India" },
+    { lat: 68.19649, lng: 13.53183, name: "Repp, Norway" },
+    //{ lat: 53.2783229, lng: 107.3506844, name: "Lake Baikal, Russia" }, // Fails SV
+    { lat: 59.9387245, lng: 30.3163621, name: "St Petersburg, Russia" },
+    { lat: 40.4900264, lng: -75.0729199, name: "Tinicum Township, PA USA" },
+    { lat: 14.5841104, lng: 120.9799109, name: "Kalakhang Maynila, Philippines"},
+    { lat: 10.6422373, lng: 122.2358045, name: "Iloilo, Philippines"},
+    { lat: 18.0619395, lng: 120.5205914, name: "Ilocos Norte, Philippines" },
+    { lat: 37.8214233, lng: -122.4801453, name: "San Francisco, CA USA" },
+  ]
+
+  // Generated locations (Backup dummy data)
   locations = [
     { lat: 53.484787, lng: -2.317712 },
     { lat: 47.907979, lng: 1.967564 },
@@ -60,99 +106,29 @@ export class LocationsService {
     { lat: 35.099203, lng: 132.860765 },
     { lat: 42.399454, lng: -87.943074 },
     { lat: 25.578881, lng: 28.285675 }
-  ]
-  randomLocations = [
-    { lat: 36.141271172178286, lng: 0.8492088317871094 },
-    { lat: 1.9350282440647293, lng: 37.9013729095459 },
-    { lat: 37.644480701178495, lng: 30.532121658325195 },
-    { lat: 57.99982074154385, lng: 102.65616416931152 },
-    { lat: 53.73094311610133, lng: 91.4011001586914 },
-    { lat: 59.66123810055141, lng: 11.317377090454102 },
-    { lat: 44.32501472633839, lng: -94.44165229797363 },
-    { lat: -21.573643682388457, lng: -48.17453384399414 },
-    { lat: 41.74941537656187, lng: 14.167728424072266 },
-    { lat: -25.052945952117266, lng: 115.11594772338867 },
-    { lat: -0.661654070911516, lng: 114.59426879882812 },
-    { lat: 45.103577011643104, lng: 38.969879150390625 },
-    { lat: 49.82945678418647, lng: -75.77038764953613 },
-    { lat: 75.43315965920442, lng: -89.86207008361816 },
-    { lat: -43.74573897707891, lng: 171.76368713378906 },
-    { lat: 41.888860307888145, lng: -70.97408294677734 },
-    { lat: 44.54497334861027, lng: -64.73539352416992 },
-    { lat: 68.42422304799327, lng: -133.76755714416504 },
-    { lat: 65.83255677020152, lng: -38.058786392211914 },
-    { lat: 4.503697774916904, lng: 118.41459274291992 },
-    { lat: 35.3428549106295, lng: 133.02434921264648 },
-    { lat: 50.128887270772594, lng: -57.65822410583496 },
-    { lat: 51.29606141699322, lng: 70.09766578674316 },
-    { lat: 3.1041779168448453, lng: 98.49783897399902 },
-    { lat: -24.78572153236346, lng: 27.44685173034668 },
-    { lat: -31.30891513627932, lng: -60.66255569458008 },
-    { lat: -29.386512801862228, lng: -66.807861328125 },
-    { lat: 6.526482127470845, lng: 124.65723037719727 },
-    { lat: 52.17319476727008, lng: 4.902992248535156 },
-    { lat: 37.31379267210621, lng: -104.54873085021973 },
-    { lat: 64.41165870386283, lng: -21.768293380737305 },
-    { lat: 17.193684712049414, lng: 80.35975456237793 },
-    { lat: 54.952977152739955, lng: -2.9375553131103516 },
-    { lat: 61.64278171347813, lng: -149.05400276184082 },
-    { lat: -3.4725558662145652, lng: -47.47012138366699 },
-    { lat: 9.37649532335025, lng: 80.55338859558105 },
-    { lat: 36.89046745265242, lng: 14.439554214477539 },
-    { lat: -31.62948693233233, lng: 150.72881698608398 },
-    { lat: 16.778903732522874, lng: -96.48382186889648 },
-    { lat: -46.00155265131527, lng: 169.76391792297363 },
-    { lat: 43.473227860824935, lng: -80.8645248413086 },
-    { lat: -24.991814926950102, lng: 114.78026390075684 },
-    { lat: -1.5806290918921924, lng: -48.607635498046875 },
-    { lat: 12.568721693410303, lng: 77.42812156677246 },
-    { lat: 73.37003697504706, lng: -56.04829788208008 },
-    { lat: 36.25341005618063, lng: 44.86636161804199 },
-    { lat: 36.69615854017761, lng: -80.77277183532715 },
-    { lat: 35.68030680140564, lng: -100.7157039642334 },
-    { lat: 48.35048824583124, lng: 94.85037803649902 },
-    { lat: 38.04646886240443, lng: -117.66254425048828 },
-    { lat: 32.46979854196172, lng: -85.06585121154785 },
-    { lat: 30.286271621849316, lng: 76.25155448913574 },
-    { lat: 55.08848760683249, lng: 10.572452545166016 },
-    { lat: 9.181413832070904, lng: -73.58951568603516 },
-    { lat: 55.02221655649537, lng: 83.70217323303223 },
-    { lat: -9.841770117026877, lng: 120.56499481201172 },
-    { lat: 40.68649587700388, lng: 48.453569412231445 },
-    { lat: 54.58275740739348, lng: 100.31169891357422 },
-    { lat: 70.54148754529194, lng: 30.018768310546875 },
-    { lat: 59.39962238727784, lng: 16.00605010986328 },
-    { lat: -20.377538298569835, lng: 118.98510932922363 },
-    { lat: 40.389050616924656, lng: -88.4674072265625 },
-    { lat: 54.30310346066392, lng: 137.7396297454834 },
-    { lat: -32.14073437803539, lng: 18.920516967773438 },
-    { lat: 36.384738113139726, lng: 44.72508430480957 },
-    { lat: -17.543224855823098, lng: -71.05124473571777 },
-    { lat: 42.89634006705753, lng: -122.93091773986816 },
-    { lat: 49.22084868600087, lng: 6.393699645996094 },
-    { lat: 66.5875148142233, lng: -150.7386875152588 }
   ];
   constructor() { }
 
-  getGameRoundLocations(num: number = 6){
+  getGameRoundLocations(num: number = 4){
     let locationIndexSet = new Set(),
         locationIndexArr = [];
 
-    for(let i = 0; i < num; i++){
-      locationIndexSet.add(this.locations[Math.floor(Math.random() * this.locations.length)]);
+    for(let i = 0; i < num * 1.5; i++){
+      locationIndexSet.add(
+        this.curratedLocations[Math.floor(Math.random() * this.curratedLocations.length)]
+      );
     }
 
-    for(let i = 0; i < locationIndexSet.size; i++){
-      locationIndexArr.push(Array.from(locationIndexSet)[i]);
+    for(let i = 0; i < num; i++){
+      locationIndexArr.push( Array.from(locationIndexSet)[i] );
     }
 
     return locationIndexArr;
+  }
 
-    // console.log(locationIndexSet);
-    // return [ Array.from(locationIndexSet)[0],
-    //          Array.from(locationIndexSet)[1],
-    //          Array.from(locationIndexSet)[2],
-    //          Array.from(locationIndexSet)[3] ];
+
+  getRandomSingleLocation(){
+    return this.locations[Math.floor(Math.random() * this.locations.length)];
   }
 
 

@@ -78,4 +78,27 @@ export class AuthService {
       {responseType:'json'}
     );
   }
+
+  addFriend(friendToAdd): Observable<any>{
+    return this.http.post(`${url}/user/add/friend`, {
+      username: this.tokenStorage.getUserInfo().sub,
+      "friend_name": friendToAdd
+    });
+  }
+
+
+  addScore(scoreToAdd) : Observable<any>
+  {
+    return this.http.post(`${url}/score/add`,
+    {
+      username: this.tokenStorage.getUserInfo().sub,
+      score_value: scoreToAdd
+    });
+  }
+
+
+  getScore(userToGet): Observable<any>{
+    return this.http.get(`${url}/score/user/${userToGet}`,
+    {responseType: 'text'} );
+  }
 }

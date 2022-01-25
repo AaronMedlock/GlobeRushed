@@ -33,7 +33,6 @@ export class UserComponent implements OnInit
   friendList;
 
 
-
   constructor(private tokenStorage: TokenStorageService,private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -45,7 +44,9 @@ export class UserComponent implements OnInit
       this.authService.getFriendLeaderboard(this.GRusername,this.friendList).subscribe(data =>
       {
         this.friendList = data;
-      })
+      });
+
+      this.authService.getScore(this.GRusername).subscribe(data => this.userxp = data);
     }
   }
 

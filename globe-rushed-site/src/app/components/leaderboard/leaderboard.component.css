@@ -38,7 +38,7 @@ header{
   border-collapse: unset;
   --webkit-border-horizontal-spacing: 0px;
   --webkit-border-vertical-spacing: 0px;
-  margin: 5px;
+  margin: 20px 5px;
   width: 100%;
 }
 .profile_friend-row > div{
