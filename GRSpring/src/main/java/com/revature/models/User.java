@@ -21,6 +21,7 @@ public class User
 	private String username;
 	private String password;
 	private String email;
+	private Integer scoreTotal;
 	
 	@ElementCollection
 	List<String> friendList;
@@ -101,6 +102,13 @@ public class User
 	public void setEmail(String email)
 	{
 		this.email = email;
+	}
+	public Integer getScoreTotal() {
+		return scoreTotal;
+	}
+
+	public void setScoreTotal(Integer scoreTotal) {
+		this.scoreTotal = scoreTotal;
 	}
 
 	@Override

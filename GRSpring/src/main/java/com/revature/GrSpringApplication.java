@@ -13,6 +13,7 @@ import com.revature.models.Score;
 import com.revature.models.User;
 import com.revature.repository.ScoreRepository;
 import com.revature.repository.UserRepository;
+import com.revature.service.UserService;
 
 @SpringBootApplication
 public class GrSpringApplication {
@@ -22,6 +23,8 @@ public class GrSpringApplication {
 	UserRepository userRepository;
 	@Autowired
 	ScoreRepository scoreRepository;
+	@Autowired
+	UserService userService;
 	
 	public static void main(String[] args) 
 	{
@@ -34,6 +37,8 @@ public class GrSpringApplication {
 		System.out.println("Insert test users");
 		userRepository.save(new User("thisUsername","thisPassword"));
 		userRepository.save(new User("John","johnspassword"));
+		userRepository.save(new User("Mary","maryspassword"));
+		
 		System.out.println(userRepository.findAll());
 		System.out.println("Insert test scores");
 		
@@ -46,6 +51,7 @@ public class GrSpringApplication {
 		}
 		//scoreRepository.save(new Score(100,defaultUser,1,1));
 		System.out.println(scoreRepository.findAll());
+		
 	}
 	
 	
