@@ -12,6 +12,8 @@ export class CountdownService {
   gameMiddle: number = 7;
   gameEnding: number = 4;
 
+
+
   constructor(){ }
 
 

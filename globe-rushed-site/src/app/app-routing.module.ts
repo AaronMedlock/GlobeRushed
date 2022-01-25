@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'', component: MainComponent, canActivate: [UserAlreadyLoggedInGuard]},
   {path:'home', component: MainComponent, canActivate: [UserAlreadyLoggedInGuard]},
   {path: 'user', component: UserComponent, canActivate: [UserNotLoggedInGuard]},
-  {path: 'play', component: PlayComponent},//, canActivate: [UserNotLoggedInGuard]},
+  {path: 'play', component: PlayComponent, canActivate: [UserNotLoggedInGuard]},
   {path: 'leaderboard', component: LeaderboardComponent},
   {path: 'leaders', component: LeaderboardComponent},
 

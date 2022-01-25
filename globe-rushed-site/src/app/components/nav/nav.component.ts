@@ -28,6 +28,13 @@ export class NavComponent implements OnInit {
     }
   }
 
+
+  /**
+   * LOGOUT -
+   * Safely log out the user by purging their JWT
+   * and reloading the page to direct them to a
+   * public area of the site.
+   */
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();

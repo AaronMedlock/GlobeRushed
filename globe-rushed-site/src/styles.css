@@ -38,6 +38,11 @@ a:visited{
 a:hover{
   color:#000;
 }
+app-play{
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
 
 /* Generic classes */
 .centered-content{
@@ -51,6 +56,103 @@ a:hover{
 }
 .split-container_half{
   width: 50%;
+}
+.dialogBox{
+  background: rgba(0,0,0,0.6);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.dialogBox > div{
+  background: #FFF;
+  border-radius: 5px;
+  min-width: 300px;
+  padding: 25px 20px 15px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+/* .dialogBox > div > span{
+  border-radius: 50%;
+  color: var(--heart);
+  cursor: pointer;
+  float: right;
+  font-size: 22.5px;
+  height: 20px;
+  margin: -15px -10px 0 0;
+  transition: .5s all;
+  width: 20px;
+}
+.dialogBox > div > span:hover{
+  color: var(--GR-red);
+} */
+.dialogBox > div > p{
+  color: var(--ink);
+  display: block;
+  font-size: 1.25em;
+  line-height: 1.69em;
+  padding: 5px 0;
+  margin: 15px auto 20px;
+  text-align: left;
+  width: 80%;
+}
+.dialogBox > div > a{
+  display: block;
+  font-size: 1.1em;
+  margin: 15px 0px;
+}
+
+/* Special Element Classes */
+.snackbar {
+  background-color: #333;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 17px;
+  min-width: 250px;
+  padding: 16px;
+  position: fixed;
+  bottom: 30px;
+  text-align: center;
+  visibility: hidden;
+  z-index: 1;
+}
+.snackbar.sbcenter{
+  margin-left: -125px;
+  left: 50%;
+}
+.snackbar.sbright{
+  right: 10%;
+}
+.snackbar.show {
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  visibility: visible;
+}
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
 }
 
 

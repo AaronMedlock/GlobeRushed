@@ -33,6 +33,7 @@ export class PlayComponent implements OnInit {
   streetView;
   answersContainer;
 
+  // On Screen elements
   @ViewChild("gametimersvg") gametimersvg: ElementRef;
   @ViewChild("gameTimerCountdown") gameTimerCountdown: ElementRef;
   @ViewChild("answerA") answerA: ElementRef;
@@ -117,6 +118,16 @@ startNewRound(){
 
 }
 
+
+/**
+ * CHECK ANSWER -
+ * Called by the choice elements in the play component.
+ * This function checks the choice element's parameter
+ * against the known correct location used by Google
+ * StreetView
+ * @param answer The choice represented by the UI element to
+ *                compared against the known correct choice.
+ */
 checkAnswer(answer){
   // Hide and disable buttons
   this.answerA.nativeElement.style.opacity = 0;
@@ -162,6 +173,15 @@ resetRound(){
   }, 1000);
 }
 
+
+
+/**
+ * GENERATE GAME OPTIONS -
+ * Inactive function as reference for
+ * further pursuing asynchronous loading
+ * of the Google API and random Street View
+ * location.
+ */
  generateGameOptions() {
   let char = 'A';
   let i = 0;

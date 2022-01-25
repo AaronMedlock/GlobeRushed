@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  googleApiKey: 'AIzaSyD4u1NL6Vmb4Y8TOKU2WUMME9MB8V428Kc'
 };
 
 /*
@@ -14,4 +15,6 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
-export const url = 'http://localhost:9192';
+//export const url = 'http://localhost:9192';
+export const url = 'http://ec2-3-82-127-19.compute-1.amazonaws.com:9192';
+export const apiKey = 'AIzaSyD4u1NL6Vmb4Y8TOKU2WUMME9MB8V428Kc';
