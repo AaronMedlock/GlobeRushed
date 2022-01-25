@@ -1,0 +1,78 @@
+<header>
+  <div class="split-container" id="user-login-reg-container">
+    <div id="index_headerimg-container" class="split-container_half">
+      <img src="{{headerDecoImage}}" id="headerDecoImage" />
+    </div>
+    <div id="index_user-container" class="split-container_half">
+      <!-- User Login box -->
+      <form id="main-login">
+        <img src="{{headerLogoImage}}" id="headerLogoImage" />
+        <label>Username:</label>
+        <input type="text" name="username" [(ngModel)]="form.username" #username="ngModel" id="username" placeholder="What do we call you?" />
+        <label>Password:</label>
+        <input type="password" name="password" [(ngModel)]="form.password" #password="ngModel" id="password" placeholder="Shh... this is a secret" />
+        <input type="submit" name="Login" value="Login and play!" (click)="doLogin()"/>
+        <p class="toggle-login" (click)="toggleMenu($event)"><b>Don't have an account?</b>Register now!</p>
+        <div id="loginMessageBox" #loginMessageBox class="snackbar"></div>
+      </form>
+
+        <!-- User Registration box -->
+        <form id="mainregistration" class="hide_index-container"  #mainregistration>
+          <img src="{{headerLogoImage}}" id="headerLogoImage" />
+
+          <label>Username:</label><span id="regUsernameMsg" #regUsernameMsg>(Enter at least 5 characters)</span>
+          <input type="text" name="newUsername" [(ngModel)]="regForm.username" id="newUsername" #newUsername
+          placeholder="What shall the world call you?" minlength="5" (input)="testInput($event)" required />
+
+          <label>Email:</label><span id="regEmailMsg" #regEmailMsg>(Must be a valid email)</span>
+          <input type="email" name="newEmail" [(ngModel)]="regForm.email" id="newEmail"
+          placeholder="Where shall our email go?" (input)="testInput($event)" #newEmail required />
+
+          <label>Password:</label><span id="regPasswordMsg" #regPasswordMsg>(Enter at least 5 characters...)</span>
+          <input type="password"  name="newPassword" [(ngModel)]="regForm.passone" id="newPassword" minlength="5"
+          placeholder="Try and pick a good one..." (input)="testInput($event)" #newPassword required />
+
+          <label>Confirm Password:</label><span id="regPasswordConfirmMsg" #regPasswordConfirmMsg>(... and make this match)</span>
+          <input type="password"  name="newPasswordConfirm" [(ngModel)]="regForm.passtwo" id="newPasswordConfirm" minlength="5"
+          placeholder="...you're almost there!" (input)="testInput($event)" #newPasswordConfirm required />
+
+          <input type="submit" value="Sign up and play!" (click)="doRegister()" id="registrationButton" #registrationButton />
+          <p class="toggle-login" (click)="toggleMenu($event)"><b>Already have an account?</b>Sign in now!</p>
+          <div id="registrationMessageBox" #registrationMessageBox class="snackbar"></div>
+        </form>
+    </div>
+  </div>
+</header>
+<main class="centered-content" >
+  <div id="index_about-us">
+    <h2>Get to know Globe Rushed</h2>
+    <p>Globe rushed is a fast paced geography guessing game that drops you somewhere
+      in the world and gives you a handful of seconds to guess where you're at before
+      your next leap. Guess right and you'll earn badges as well as a spot on our leaderboards.
+      You can rank yourself amongst your friends or amongst our global community! <a href="#index_user-container">Register now</a>
+      or keep reading if you want to know more about Globe Rushed!
+    </p>
+  </div>
+    <button class="accordion" (click)="toggleAccordion($event.target)">How do I play?</button>
+    <div class="panel">
+      <p>To get started, simply create an account and login. Once you do, select your game
+        mode and begin making leaps across the globe. You'll have a handful of seconds to
+        choose from a handful of options based on your surroundings using Google Streetview.</p>
+      <p>Choose correctly and you'll be awarded points that allow you to rank up and place on
+        our leaderboards. Having trouble with a particular location? You can spend some of those
+        points to get a hint that might make your selection a little easier.
+      </p>
+    </div>
+    <button class="accordion" (click)="toggleAccordion($event.target)">How do I add friends?</button>
+    <div class="panel">
+      <p>Simply log into your account and at the bottom of your friend's leaderboard
+        you'll see a button to add a new friend using their username.</p>
+    </div>
+    <button class="accordion" (click)="toggleAccordion($event.target)">Where can I see the leaderboards?</button>
+    <div class="panel">
+      <p>To see how you rank globally, simply visit <a routerLink="/leaderboard">our leaderboards</a>.
+        If you want to see how you rank against your friends, simply log in and you'll find a customized leaderboard with
+      your friend's progress.</p>
+    </div>
+</main>
+

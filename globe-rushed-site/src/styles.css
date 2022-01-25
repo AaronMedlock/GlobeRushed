@@ -1,0 +1,67 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+/* Custom colors to use in Globe Rushed App */
+:root{
+  --GR-red: #D7476D;
+  --GR-red-hover: rgb(253, 124, 159);
+  --GR-orange: #EDAE41;
+  --GR-yellow: #E9CE4A;
+  --GR-green: #C1EA84;
+  --GR-turquoise: #80DECD;
+  --GR-mint: #9BE7AF;
+  --GR-blue: #16D6FA;
+  --GR-purple: #AF87CE;
+  --GR-magenta: #EA1A7F;
+  --GR-ink: #191312;
+  --GR-soft-ink: #696969;
+}
+/* Global tag styling */
+body{
+  color: var(--ink);
+  background-color: #fbfbfb;
+  font-family: "Roboto", Helvetica, sans-serif;
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  width: 100vw;
+}
+a{
+  color: var(--GR-orange);
+  cursor: pointer;
+  font-weight: 450;
+  text-decoration: none;
+  transition: 0.5s all;
+}
+a:visited{
+  color: var(#eebc66);
+}
+a:hover{
+  color:#000;
+}
+
+/* Generic classes */
+.centered-content{
+  display: block;
+  margin: 5px auto;
+  width: 40%;
+}
+.split-container{
+  display: flex;
+  width: 100%;
+}
+.split-container_half{
+  width: 50%;
+}
+
+
+/* Media Queries */
+@media only screen and (min-width: 320px) and (max-width : 767px){
+  .centered-content{
+    width: 88%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width : 1023px){
+  .centered-content{
+    width: 75%;
+  }
+}

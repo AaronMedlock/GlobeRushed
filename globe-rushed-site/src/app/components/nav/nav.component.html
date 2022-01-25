@@ -1,0 +1,26 @@
+<div *ngIf="router.url != '/play'">
+  <!-- MENU LOGO -->
+  <div *ngIf="router.url != '/' && router.url != '/home'">
+    <a routerLink="/main">
+     <img src="{{logoUrl}}" style="height: 50px; padding: 5px;" />
+    </a>
+  </div>
+
+  <!-- MENU ICON -->
+  <div id="nav_burgerbutton">
+    <div class="nav-icon" (click)="toggleClass($event)" id="nav-icon-btn">
+      <div></div>
+    </div>
+  </div>
+
+  <!-- MENU -->
+  <nav id="navlinks" class="nav_overlay ">
+    <div class="nav_overlay-content">
+      <ul>
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/leaderboard">Leaderboard</a></li>
+        <li *ngIf="router.url == '/user'" id="logout-link"><a (click)="logout()">(logout)</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
