@@ -10,5 +10,6 @@ public interface UserService {
 	User findById(int id);
 	User findByUsername(String username);
 	User addFriendByUsername(String username,String friendName);
+	User updateScore(Integer scoreTotal,String username);
 	List<User> findAll();
 }

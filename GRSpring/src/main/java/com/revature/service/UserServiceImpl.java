@@ -49,4 +49,12 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll().stream().collect(Collectors.toList());
 	}
 
+	@Override
+	public User updateScore(Integer scoreTotal,String username) 
+	{
+		User thisUser = findByUsername(username);
+		thisUser.setScoreTotal(scoreTotal);
+		return save(thisUser);
+	}
+
 }

@@ -110,9 +110,7 @@ public class ScoreController
 			}
 			
 			//add the sum to the list
-			
-			thisFriend.setScoreTotal(friendSum);			
-			
+			userService.updateScore(friendSum, thisFriend.getUsername());			
 		}
 		//send a map of values <Username,friendSum>
 		return ResponseEntity.ok(friendListAsUser);	
