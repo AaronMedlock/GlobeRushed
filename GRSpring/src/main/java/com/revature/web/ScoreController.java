@@ -22,6 +22,7 @@ import com.revature.models.Score;
 import com.revature.models.User;
 import com.revature.service.ScoreService;
 import com.revature.service.UserService;
+import com.revature.util.SortByScoreValue;
 
 @RestController
 @RequestMapping("/score")
@@ -112,7 +113,9 @@ public class ScoreController
 			//add the sum to the list
 			userService.updateScore(friendSum, thisFriend.getUsername());			
 		}
-		//send a map of values <Username,friendSum>
+		SortByScoreValue sort = new SortByScoreValue();
+		Collections.sort(friendListAsUser,sort.reversed());
+		
 		return ResponseEntity.ok(friendListAsUser);	
 	}
 	
