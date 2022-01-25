@@ -104,7 +104,7 @@ header{
   border-collapse: unset;
   --webkit-border-horizontal-spacing: 0px;
   --webkit-border-vertical-spacing: 0px;
-  margin: 5px;
+  margin: 20px 5px;
   width: 100%;
 }
 .profile_friend-row > div{
@@ -114,14 +114,17 @@ header{
   font-size: 25px;
   width: 10%;
 }
-.firstplace i{
+.profile_friend-row:nth-of-type(1) > .profile_friend-trophy > i{
   color: var(--GR-yellow);
 }
-.secondplace i{
+.profile_friend-row:nth-of-type(2) > .profile_friend-trophy > i{
   color: #777;
 }
-.thirdplace i{
+.profile_friend-row:nth-of-type(3) > .profile_friend-trophy > i{
   color: var(--GR-orange);
+}
+.profile_friend-row:nth-of-type(n+4) > .profile_friend-trophy > i{
+  display: none;
 }
 .profile_friend-ranking{
   width: 10%;
